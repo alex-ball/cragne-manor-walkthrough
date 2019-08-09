@@ -1,0 +1,3968 @@
+\PassOptionsToPackage{svgnames}{xcolor}
+\documentclass[a5paper]{extarticle}
+\usepackage[british]{babel}
+%\usepackage[papersize={150mm,123mm},hmargin=10mm,vmargin={10mm,15mm}]{geometry}
+\usepackage[hmargin=10mm,vmargin={10mm,15mm}]{geometry}
+
+\usepackage{noto}
+\usepackage{fontawesome5}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+
+\usepackage{parskip}
+\newlength{\currentparskip}
+\setlength{\currentparskip}{\parskip}
+
+\setcounter{tocdepth}{1}
+
+\usepackage{xltabular}
+\renewcommand{\arraystretch}{1.5}
+\usepackage{adjustbox}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage[mla]{xellipsis}
+\usepackage{tgm1}
+\tikzset{tgmnode/.append style={draw=DarkRed}}
+\usetikzlibrary{graphdrawing, calc, arrows.meta}
+\usegdlibrary{layered}
+\tikzset{
+  forked/.style={%
+    to path={|- ($(\tikztotarget) + (0,#1)$) -- (\tikztotarget) \tikztonodes}},
+  forked/.default={0.5},
+  hooked/.style={%
+    rounded corners,
+    to path={-- ($(\tikztotarget) + (0,#1)$) -- (\tikztotarget) \tikztonodes}},
+  hooked/.default={1}
+}
+\usepackage[colorlinks]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\title{Cragne Manor: A Multilayered Walkthrough for the Spoiler Averse}
+\author{Alex Ball}
+\date{2019}
+
+\begin{document}
+\thispagestyle{empty}
+\vspace*{\stretch{2}}
+\begin{center}
+\huge\textsc{Cragne Manor:} A Multilayered Walkthrough for the Spoiler Averse\par
+
+\Large Alex Ball\par
+\end{center}
+\vspace*{\stretch{3}}
+{\centering\Large Version 1.0 --- \today\par}
+\newpage
+
+\tableofcontents
+
+\newpage
+\section{About this document}\label{sec:about}
+
+This is not a regular walkthrough.
+It does not provide a turn-by-turn set of commands for you to feed into the game.
+There are two reasons for this.
+First, that would take away the fun of working things out for yourself.
+Second, there's so much in this game that I'm sure I've missed some gems,
+and I don't want to make you miss them too.
+
+I have therefore arranged this walkthrough in sections so you can choose how much help you expose yourself to.
+My recommended route in \cref{sec:route} should be relatively spoiler-free.
+It just names a room to tackle and then the direction to go in to reach the next location.
+Some sets of directions have been marked with an asterisk;
+the significance of this may or may not become obvious to you as you play.
+Where the action is concentrated in a particular area,
+a map of the ‘open’ rooms in that area is provided.
+
+My route is designed to minimize the travelling you have to do,
+rather than follow what you might call story branches.
+If you would rather work out a route for yourself,
+I have provided a set of maps for you in \cref{sec:full-map}.
+The first page shows the geographical layout of the rooms,
+while the second shows you the order in which the rooms must be completed.
+The latter makes it a bit more obvious what you are looking for in each room,
+or at least where the thing you have just found or discovered should be used.
+This may save you some unnecessary traipsing around,
+but equally it may take away some of the fun.
+
+If you want some help, the steps in the recommended route link through to a
+corresponding room description in \cref{sec:sum};
+this will tell you a bit more about what you are supposed to be doing,
+but won't tell you how to do it.
+If you get stuck, you can follow the link through to the corresponding room solution in \cref{sec:sol};
+this will describe the steps you have to go through,
+but even here I have tried to be a little vague so I don't spoil all the surprises for you.
+
+Finally, \cref{sec:nb} contains various notes and clues that didn't belong
+in the other sections.
+
+I don't recommend you print this document out.
+I try to keep information on different subjects on different pages,
+so you don't accidentally see something you don't want to.
+There is a \emph{lot} of wasted white space.
+
+\newpage
+\subsection{Terminology}\label{sec:terms}
+
+Rooms in this game may be solved by doing one or more of the following:
+
+\begin{itemize}
+\item
+  unblocking an exit;
+\item
+  obtaining an item you'll need in another room;
+\item
+  learning a critical piece of information.
+\end{itemize}
+
+You cannot solve all the rooms in the game the first time you encounter them.
+This is reflected in this walkthrough in the following way:
+
+\begin{itemize}
+\item
+  If you just need to pass through, it is omitted from the route and marked
+  on the map in red.
+\item
+  If it is possible for you to work out what sort of item or clue you need to
+  solve a puzzle in a room (other than a key), it is included in the route
+  and marked with ‘establish requirements’. It is marked on the map in red.
+\item
+  If it is possible to solve some but not all of the challenges in a room,
+  it is marked in the route with ‘partial’ and marked on the map in amber.
+\item
+  If it is possible to solve all of the challenges in a room, it is included
+  in the route unmarked and marked on the map in green.
+\item
+  If there are some interesting things to examine or do in the room, but not
+  one of the above activities, it is marked in the route as ‘optional’ and
+  marked on the map in green.
+\end{itemize}
+
+\bigskip
+\begin{adjustbox}{center}
+\sffamily
+\begin{gamemap}[set grid={10em}{6em}]
+\graph [no placement] { [y=0]
+  "Room you\\can leave\\unsolved" [x=0],
+  "Room you\\can solve\\partially" [x=1,draw=DarkOrange],
+  "Room you\\can solve\\fully" [x=2,draw=Green],
+};
+\end{gamemap}
+\end{adjustbox}
+
+\newpage
+\section{General tips when playing the game}
+
+I was interested in playing \emph{Cragne Manor} because I wanted a game I could dip in and out of,
+and a game consisting of mainly one-room puzzles sounded ideal.
+Even though the rooms weren't quite as independent as I'd thought,
+they were independent enough that I didn't feel I had to scrutinize and memorize every detail.
+
+There are some innovative features of the game that make it particularly playable.
+One is the rather nice (and generous) form of inventory management.
+Another is that, along the way, you will learn how to tell if you have everything you need to solve a particular room.
+A particularly humane feature is the \textsc{take back} instruction,
+which can be used to get you out of an unwinnable state where \textsc{undo} wouldn't.
+This means you can try risky solutions with some degree of security,
+and enjoy the many ways of dying or otherwise losing the game
+without losing the ability to complete it.
+
+Nevertheless, I recommend saving before beginning (or after finishing) each room,
+as some non-fatal but irksome things may happen to you that you may not be able to undo easily.
+Lastly, some other words of advice: examine everything, check your inventory regularly
+(it can change without you being aware of it), don't be afraid to act on even surreal hints,
+but also hold your nerve: some correct paths look highly unpromising.
+
+Good luck!
+
+\newpage
+\section{Recommended route}\label{sec:route}
+
+\begin{description}
+\item[{\hyperref[sec:req-Railway-Platform-0]{Railway Platform}}] (establish requirements)\\
+  \emph{Go S}
+\item[{\hyperref[sec:req-Train-Station-Lobby-0]{Train Station Lobby}}] (partial)\\
+  \emph{Go W}
+\item[{\hyperref[sec:req-Train-Station-Restroom]{Train Station Restroom}}] ~\\
+  \emph{Go E, S}
+\item[{\hyperref[sec:req-Exterior-of-Train-Station]{Exterior of Train Station}}] ~\\
+  \emph{Go S}
+\item[{\hyperref[sec:req-Milkweed]{Milkweed}}] ~\\
+  \emph{Go S, NE}
+\item[{\hyperref[sec:req-Churchyard]{The Churchyard}}] ~\\
+  \emph{Go in}
+\item[{\hyperref[sec:req-Mausoleum]{Mausoleum}}] ~\\
+  \emph{Go out, NE}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{center}
+\sffamily\footnotesize
+\begin{gamemap}[set grid={10em}{5em}]
+\graph [no placement] { [x=0]
+  "Railway\\platform" [entry] -- [going=s]
+  lobby/"Train station\\lobby" [y=-1,exit=e,draw=DarkOrange] -- [going=w]
+  "Train station\\restroom" [x=-1,y=-1,draw=Green],
+  lobby -- [going=s]
+  "Exterior of\\Train station" [y=-2,draw=Green]  -- [going=s]
+  "Milkweed" [y=-3,draw=Green] -- [going=s]
+  "Church\\Exterior" [y=-4,exit=e,tunnel] -- [going=ne]
+  cy/"The\\Churchyard" [x=1,y=-3,exit=ne,draw=Green] -- [going=in]
+  "Mausoleum" [x=2.1,y=-3,draw=Green]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-1}
+\begin{description}
+\item[{\hyperref[sec:req-The-Dim-Recesses-of-the-Forest]{The Dim Recesses of the Forest}}] ~\\
+  \emph{Go N, S, SE}
+\item[{\hyperref[sec:req-Shack-Exterior-0]{Shack Exterior}}] (partial)\\
+  \emph{Go SE}
+\item[{\hyperref[sec:req-Outside-the-Library]{Outside the Library}}] (optional)\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Public-Library-0]{Backwater Public Library}}] (establish requirements)\\
+  \emph{Go W, W}
+\item[{\hyperref[sec:req-Estate-Agent's-Office]{Estate Agent's Office}}] ~\\
+  \emph{Go E, S}
+\item[{\hyperref[sec:req-Town-Square-0]{Town Square}}] (establish requirements)\\
+  \emph{Go SE}
+\item[{\hyperref[sec:req-River-Walk]{River Walk}}] ~\\
+  \emph{N}
+\item[{\hyperref[sec:req-Under-the-Bridge-0]{Under the Bridge}}] (partial)\\
+  \emph{Go S -- Go NW, W, N, N, N, N*}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph[no placement] {
+  ch/"Church\\Exterior" [x=0,y=-4,exit=n,entry] -- [going=ne]
+  cy/"The\\Churchyard" [x=1,y=-3,draw=Green] -- [going=in]
+  "Mausoleum" [x=2.1,y=-3,draw=Green],
+  cy  -- [going=ne]
+  dr/"The Dim\\Recesses of\\the Forest" [x=2,y=-2,draw=Green] -- [going=se]
+  "Shack\\Exterior" [x=3,y=-3,draw=DarkOrange] -- [going=se]
+  ol/"Outside\\the Library" [x=4,y=-4,tunnel,draw=Green] -- [going=e]
+  "Backwater\\Public\\Library" [x=5.1,y=-4],
+  ol -- [going=w]
+  "Estate\\Agent's\\Office" [x=3,y=-4,draw=Green],
+  ol -- [going=s]
+  ts/"Town\\Square" [x=4,y=-5,exits={e,sw}] -- [going=se]
+  "River\\Walk" [x=5,y=-6,draw=Green,tunnel] -- [going=n]
+  ub/"Under the\\Bridge" [x=5,y=-5,exit={d=\tgmSE},draw=DarkOrange],
+  dr -- [going=n]
+  "The Old Well" [x=2,y=-1,tunnel],
+  ts -- [going=w] ch
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-2}
+\begin{description}
+\item[{\hyperref[sec:req-Railway-Platform]{Railway Platform}}] ~\\
+  \emph{Go S, S, S, S, NE, NE, N}*
+\item[{\hyperref[sec:req-The-Old-Well]{The Old Well}}] ~\\
+  \emph{Go down}
+\item[{\hyperref[sec:req-Circular-Room]{Circular Room}}] ~\\
+  \emph{Go up -- Go S, SE, SE* -- Go S, E}
+\item[{\hyperref[sec:req-Bridge]{Bridge}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Outside-Pub]{Outside Pub}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Constabulary-Road]{Constabulary Road}}] (optional)\\
+  \emph{Go N}
+\item [{\hyperref[sec:req-Backwater-Jail]{Backwater Jail} --
+        \hyperref[sec:req-Padded-Cell]{Padded Cell} --
+        \hyperref[sec:req-Backwater-Jail]{Backwater Jail}}] ~\\
+  \emph{Go S, NE, SE}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}[set grid={8em}{6em}]
+\graph [no placement] {
+  ub/"Under the\\Bridge" [x=5,y=-5.25,exit={d=\tgmSE},draw=DarkOrange] -- [going=s]
+  "River\\Walk" [x=5,y=-6,entry,draw=Green] -- [going=nw]
+  ts/"Town\\Square" [x=4,y=-5,exits=sw] -- [going=w]
+  ch/"Church\\Exterior" [x=2.5,y=-5,tunnel] -- [going=n,dashed]
+  "Railway\\Platform" [x=2.5,y=-3,tunnel,draw=Green],
+  ch -- [go={ne}{s},dashed]
+  ow/"The Old\\Well" [x=3.5,y=-3,tunnel,draw=Green] -- [go={d=\tgmENE}{u=\tgmWSW}]
+  "Circular\\Room" [x=4.5,y=-3,draw=Green],
+  ow -- [go={s}{nw},dashed]
+  ol/"Outside\\the Library" [x=4,y=-4,exit=w,tunnel,draw=Green] -- [going=s]
+  ts -- [going=e]
+  "Bridge" [x=5,y=-4.7,draw=Green] -- [going=e]
+  "Outside\\Pub" [x=5.9,y=-5,exit=n,draw=Green] -- [going=e]
+  "Constabulary\\Road" [x=7,y=-5,exit=ne,tunnel,draw=Green] -- [going=n]
+  "Backwater\\Jail" [x=7,y=-4,draw=Green] -- [going=n]
+  "Padded\\Cell" [x=7,y=-3,draw=Green],
+  ol  -- [going=e]
+  "Backwater\\Public\\Library" [x=5.1,y=-4]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-3}
+\begin{description}
+\item[{\hyperref[sec:req-Outside-the-Plant]{Outside the Plant}}] ~\\
+  \emph{Go in, up}
+\item[{\hyperref[sec:req-Dusty-Office]{Dusty Office}}] ~\\
+  \emph{Go down, W}
+\item[{\hyperref[sec:req-Bathroom-of-the-Meatpacking-Plant]{Bathroom of the Meatpacking Plant}}] ~\\
+  \emph{Go E, out, NW}
+\item[{\hyperref[sec:req-Hillside-Path]{Hillside Path}}] (partial)\\
+  \emph{Go N}
+\item[{\hyperref[sec:req-Front-Walk]{Front Walk}}] (optional)\\
+  \emph{Go NE}
+\item[{\hyperref[sec:req-Cragne-Family-Plot]{Cragne Family Plot}}] (partial)\\
+  \emph{Go NW}
+\item[{\hyperref[sec:req-Back-Garden]{Back Garden}}] ~\\
+  \emph{Go in}
+\item[{\hyperref[sec:req-Shambolic-Shack-0]{Shambolic Shack}}] (partial)\\
+  \emph{Go out, SW, in, out, SE -- Go S, SW, W, W, W, SE* -- Go N}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph[no placement] {
+  "Constabulary\\Road" [x=7,y=-5,exits={n,w},entry,draw=Green] -- [going=ne]
+  hp/"Hillside\\Path" [x=8,y=-4,draw=DarkOrange] -- [going=se]
+  "Outside\\the Plant" [x=9,y=-5,tunnel,draw=Green] -- [going=in]
+  mp/"The\\Meatpacking\\Plant" [x=10.5,y=-6] -- [going=u]
+  "Dusty\\Office" [x=10.5,y=-5,draw=Green],
+  mp -- [going=w]
+  "Bathroom of\\the Meatpacking\\Plant" [x=9,y=-6,draw=Green],
+  hp -- [going=n]
+  fw/"Front\\Walk" [x=8,y=-3,exit=n,tunnel,draw=Green] -- [going=nw]
+  og/"Outside the\\Greenhouse" [x=7,y=-2,draw=Green] -- [going=ne]
+  bg/"The Cragne\\Manor's Back\\Garden" [x=8,y=-1,draw=Green] -- [going=se]
+  "Cragne\\Family\\Plot" [x=9,y=-2,exit=in,draw=DarkOrange] -- [going=sw]
+  fw,
+  og -- [go={in=\tgmWSW}{o=\tgmENE}]
+  "Greenhouse"[x=5.9,y=-2],
+  bg -- [going=in]
+  "The\\Shambolic\\Shack" [x=9.5,y=-1,draw=DarkOrange]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-4}
+\begin{description}
+\item[{\hyperref[sec:req-Under-the-Bridge]{Under the Bridge}}] ~\\
+  \emph{Go down, NW}
+\item[{\hyperref[sec:req-Tunnel-Entrance]{Tunnel Entrance}}] ~\\
+  \emph{Go NE}
+\item[{\hyperref[sec:req-Small-Chamber]{Small Chamber}}] ~\\
+  \emph{Go SW, U, U}
+\item[{\hyperref[sec:req-Tiny-Windowless-Office]{Tiny Windowless Office}}] (partial)\\
+  \emph{Go down, down, SE, up, S -- Go NW, E, E, E, NE, N* -- Go N}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph [no placement] {
+  "River\\Walk" [x=0,y=-8,draw=Green,entry,exit=nw] -- [going=n]
+  "Under the\\Bridge" [x=0,y=-7,draw=Green] -- [go={d=220}{u}]
+  "Subterranean\\tunnel" [x=-1,y=-8,exit=e] -- [going=nw]
+  te/"Tunnel\\Entrance" [x=-2,y=-7,draw=Green] -- [going=ne]
+  "Small\\Chamber" [x=-1,y=-6,draw=Green],
+  te -- [going=u]
+  "Basement" [x=-2,y=-6] -- [going=u]
+  "Tiny Window-\\less Office" [x=-2,y=-5,draw=DarkOrange],
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-5}
+\begin{description}
+\item[{\hyperref[sec:req-Mudroom]{Mudroom}}] ~\\
+  \emph{Go N}
+\item[{\hyperref[sec:req-Foyer]{Foyer}}] (optional)\\
+  \emph{Go N}
+\item[{\hyperref[sec:req-Landing-at-the-Bottom-of-Stairs]{Landing at the Bottom of Stairs}}] ~\\
+  \emph{Go up}
+\item[{\hyperref[sec:req-Top-of-Stairs]{Top of Stairs}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Upstairs-Hall-N]{Upstairs Hall, North End}}] (establish requirements)\\
+  \emph{Go N}
+\item[{\hyperref[sec:req-Nursery--Hillside-Path--Carol's-Room]{Nursery -- Hillside Path -- Carol’s Room}}] ~\\
+  \emph{Go S}
+\item[{\hyperref[sec:req-Hallway-South]{Hallway South}}] (partial)\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Library]{Library}}] ~\\
+  \emph{Go W, W}
+\item[{\hyperref[sec:req-Study]{Study}}] ~\\
+  \emph{Go E, N, W, D, S, E}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph [no placement] {
+  { [x=1]
+  hp/"Hillside\\Path" [y=2,tunnel,draw=DarkOrange] -- [going=n]
+  fw/"Front\\Walk" [y=3,entry,exits={nw,ne},draw=Green] -- [going=n]
+  "Mudroom" [y=4,draw=Green] -- [going=n]
+  f/"Foyer" [y=5,draw=Green,exits={e,w}] -- [going=n]
+  "Landing at\\the Bottom\\of Stairs" [y=6,exits={n},draw=Green]
+  } -- [go={u=\tgmESE}{d=\tgmWNW}]
+  "Top of\\Stairs" [x=2,y=5,draw=Green] -- [going=e]
+  hn/"Upstairs\\Hall N" [x=3,y=5,exit=e] -- [going=s]
+  hs/"Hallway\\South" [x=3,y=4,exit=s,draw=DarkOrange] -- [going=e]
+  "Library" [x=4,y=4,draw=Green],
+  hs-- [going=w]
+  "Study" [x=2,y=4,draw=Green],
+  hn -- [going=n]
+  "Nursery" [x=3,y=6,tunnel,draw=Green]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-6}
+\begin{description}
+\item[{\hyperref[sec:req-Gallery]{Gallery}}] ~\\
+  \emph{Go N, E}
+\item[{\hyperref[sec:req-Music-Room]{Music Room}}] ~\\
+  \emph{Go W, S, W, W}
+\item[{\hyperref[sec:req-Court-0]{Court}}] (partial) ~\\
+  \emph{Go E, S, S, NE}
+\item[{\hyperref[sec:req-Cragne-Family-Plot-1]{Cragne Family Plot}}] ~\\
+  \emph{Go in}
+\item[{\hyperref[sec:req-Crypt]{Crypt}}] ~\\
+  \emph{Go out, SW -- Go S, SW, W, W, W* }
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph [no placement] {
+  fw/"Front\\Walk" [x=0,y=0,tunnel,exits={nw,s},draw=Green] -- [going=n]
+  "Mudroom" [x=0,y=1,draw=Green] -- [going=n]
+  f/"Foyer" [x=0,y=2,draw=Green] -- [going=w]
+  "Court" [x=-1,y=2,draw=DarkOrange],
+  f -- [going=e]
+  "Gallery" [x=1,y=2,draw=Green] -- [going=n]
+  "Rec\\Room" [x=1,y=3] -- [going=e]
+  "Music\\Room" [x=2,y=3,draw=Green],
+  f -- [going=n]
+  "Landing at\\the Bottom\\of Stairs" [x=0,y=3,entry,exits={n,u=\tgmESE},draw=Green],
+  fw -- [going=ne]
+  "Cragne\\Family\\Plot" [x=1,y=1,exit=nw,draw=Green] -- [going=in]
+  "Crypt" [x=2,y=1,draw=Green]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-7}
+\begin{description}
+\item[{\hyperref[sec:req-Town-Square]{Town Square}}] ~\\
+  \emph{Go SW}
+\item[{\hyperref[sec:req-Drinking-Fountain]{Drinking Fountain}}] ~\\
+  \emph{Go NE, W}
+\item[{\hyperref[sec:req-Church-Exterior]{Church Exterior}}] ~\\
+  \emph{Go in}
+\item[{\hyperref[sec:req-Church-Lobby-Space]{Church Lobby-Space}}] ~\\
+  \emph{Go up}
+\item[{\hyperref[sec:req-Steeple-0]{Steeple}}] (partial)\\
+  \emph{Go down, W}
+\item[{\hyperref[sec:req-Chapel]{Chapel}}] ~\\
+  \emph{Go S, down}
+\item[{\hyperref[sec:req-Church-Basement]{Church Basement}}] ~\\
+  \emph{Go up, N, E out -- Go E, E, E, E, NE, N* -- Go N, N, N, N }
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph [no placement] {
+  "River\\Walk" [x=2,y=-5,exit=n,tunnel,draw=Green] -- [going=nw]
+  ts/"Town\\Square" [x=1,y=-4,entry,draw=Green] -- [going=w]
+  cx/"Church\\Exterior" [x=0,y=-4,exit=n,tunnel,draw=Green] -- [go={in=\tgmWSW}{o=\tgmENE}]
+  cn/"Church\\Lobby-\\Space" [x=-1,y=-4,draw=Green] -- [going=u]
+  "Steeple" [x=-1,y=-3,draw=DarkOrange],
+  cn -- [going=w]
+  "Chapel" [x=-2,y=-4,draw=Green] -- [going=s]
+  co/"Church\\Office" [x=-2,y=-5,draw=Green] -- [going=d]
+  "Church\\Basement" [x=-2,y=-6,exit=d,draw=Green],
+  ol/"Outside\\the Library" [x=1,y=-3,exits={nw,e,w},tunnel,draw=Green] -- [going=s]
+  ts -- [going=sw]
+  "Drinking\\Fountain" [x=0,y=-5,draw=Green]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-8}
+\begin{description}
+\item[{\hyperref[sec:req-Dining-Room]{Dining Room}}] (optional)\\
+  \emph{E, W, W}
+\item[{\hyperref[sec:req-Kitchen]{Kitchen}}] ~\\
+  \emph{Go down}
+\item[{\hyperref[sec:req-Basement]{Basement}}] ~\\
+  \emph{Go N}
+\end{description}
+\vskip-\dimexpr\parskip + 2\partopsep + \smallskipamount\relax
+\begin{multicols}{2}
+\begin{description}
+\item[{\hyperref[sec:req-Cold-Storage]{Cold Storage}}] ~\\
+  \emph{Go S, E}
+\item[{\hyperref[sec:req-Pantry]{Pantry}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Workroom]{Workroom}}] ~\\
+  \emph{Go W, W, W}
+\item[{\hyperref[sec:req-Wine-Cellar]{Wine Cellar}}] ~\\
+  \emph{Go W}
+\item[{\hyperref[sec:req-Laboratory]{Laboratory}}] ~\\
+  \emph{Go E, E, S}
+\item[{\hyperref[sec:req-Boiler-Room]{Boiler Room}}] ~\\
+  \emph{Go down}
+\end{description}
+\end{multicols}
+\vskip-\dimexpr\parskip + 2\partopsep\relax
+\begin{adjustbox}{minipage=\dimexpr.5\linewidth - .5\multicolsep\relax,right}
+\setlength{\parskip}{\currentparskip}%
+\begin{description}
+\item[{\hyperref[sec:req-Malign-Tunnel]{Malign Tunnel}}] (optional)\\
+  \emph{Go SW, up}
+\item[{\hyperref[sec:req-Courtyard]{Courtyard}}] ~\\
+  \emph{Go N -- Go NW, N* --\\Go N, N, N, up, E, S}
+\end{description}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth}
+\sffamily\footnotesize
+\begin{gamemap}[set grid={9em}{5em}]
+\graph [no placement] {
+  fw/"Front\\Walk" [x=0,y=1.5,entry,exits={nw,ne,s},draw=Green] -- [going=n,dashed]
+  lb/"Landing at\\the Bottom\\of Stairs" [x=0,y=3,exit={u=\tgmESE},draw=Green] -- [going=n]
+  dr/"Dining\\Room" [x=0,y=5,exit=e,draw=Green] -- [going=w]
+  "Kitchen" [x=-1,y=5,draw=Green] -- [go={d}{u=\tgmNE}]
+  b/"Basement" [x=-2,y=4,draw=Green] -- [going=n]
+  "Cold Storage\\Room" [x=-2,y=5,draw=Green],
+  b -- [going=s]
+  "Boiler\\Room" [x=-2,y=3,draw=Green] -- [going=d]
+  "Malign\\Tunnel" [x=-2,y=2,tunnel,draw=Green] -- [going=sw]
+  at/"Amorphous\\Tunnel" [x=-2.8,y=1,exit=w] -- [go={u=\tgmNNW}{d=\tgmSSE}]
+  "Courtyard" [x=-3.6,y=2,exits={e,n},draw=Green],
+  b -- [going=e]
+  "Pantry" [x=-1.2,y=4,draw=Green] -- [going=e]
+  "Workroom" [x=-0.4,y=4,draw=Green],
+  b -- [going=w]
+  "Wine\\Cellar" [x=-2.8,y=4,draw=Green] -- [going=w]
+  "Laboratory" [x=-3.6,y=4,draw=Green],
+  dr -- [going=e]
+  "Sitting\\Room" [x=0.8,y=5],
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-9}
+\begin{description}
+\item[{\hyperref[sec:req-Hallway-South-1]{Hallway South}}] ~\\
+  \emph{Go S}
+\item[{\hyperref[sec:req-Balcony]{Balcony}}] ~\\
+  \emph{Go N, N}
+\item[{\hyperref[sec:req-Upstairs-Hall-N]{Upstairs Hall, North End}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Master-Bedroom]{Master Bedroom}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Shadowy-Closet]{Shadowy Closet}}] ~\\
+  \emph{Go up}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph [no placement] {
+  { [x=1]
+  fw/"Front\\Walk" [y=1,entry,exits={nw,ne,s},draw=Green] -- [going=n]
+  "Mudroom" [y=2,draw=Green] -- [going=n]
+  f/"Foyer" [y=3,draw=Green,exits={e,w}] -- [going=n]
+  "Landing at\\the Bottom\\of Stairs" [y=4,exit=n,draw=Green]
+  } -- [go={u=\tgmENE}{d=\tgmWSW}]
+  "Top of\\Stairs" [x=2,y=5,draw=Green] -- [going=e]
+  hn/"Upstairs\\Hall N" [x=3,y=5,draw=Green] -- [going=s]
+  hs/"Hallway\\South" [x=3,y=4,draw=Green] -- [going=e]
+  "Library" [x=4,y=4,draw=Green],
+  "Study" [x=2,y=4,draw=Green] -- [going=e]
+  hs -- [going=s]
+  "Balcony" [x=3,y=3,tunnel,draw=Green],
+  hn -- [going=n]
+  "Carol's Room" [x=3,y=6,draw=Green],
+  hn -- [going=e]
+  "Master\\Bedroom" [x=4,y=5,draw=Green] -- [going=e]
+  "Shadowy\\Closet" [x=5,y=5,exit=u,draw=Green]
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-10}
+\begin{description}
+\item[{\hyperref[sec:req-Attic]{Attic}}] ~\\
+  \emph{Go S}
+\item[{\hyperref[sec:req-Disheveled-Studio]{Disheveled Studio}}] ~\\
+  \emph{Go SE}
+\item[{\hyperref[sec:req-Abandoned-Nursery-0]{Abandoned Nursery}}] (establish requirements)\\
+  \emph{Go N}
+\item[{\hyperref[sec:req-Invasive-Library]{Invasive Library}}] ~\\
+  \emph{Go SE, W}
+\item[{\hyperref[sec:req-Science-Tower]{Science Tower}}] ~\\
+  \emph{Go E (or SW, N, SE for completeness)}
+\item[{\hyperref[sec:req-Branching-Corridor]{Branching Corridor}}] ~\\
+  \emph{Go SE, NW, E -- Go down, W, W, W, down, S, S, S* -- Go NW, NE, in}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{center}
+\sffamily\footnotesize
+\begin{gamemap}[set grid={9em}{5em}]
+\graph [no placement] {
+  "Shadowy\\Closet" [x=5,y=2,entry,exit=w,draw=Green] -- [go={u=\tgmSSW}{d=\tgmNNE}]
+  a/"Attic" [x=5,y=1,draw=Green,tunnel] -- [going=w]
+  bc/"Branching\\Corridor" [x=4,y=1,draw=Green] -- [going=w]
+  "Science\\Tower" [x=3,y=1,draw=Green] -- [going=sw]
+  an/"Abandoned\\Nursery" [x=2,y=0] -- [going=n]
+  "Invasive\\Library" [x=2,y=2,draw=Green] -- [going=se]
+  bc -- [going=se]
+  "Observatory" [x=5,y=0],
+  a -- [rounded corners,tgmedge,to path={ -- (5,0.5) node [transit node,pos=0] {S} -- (2.25,0.5) -- (1.75,1.5) -- (1,1.5) -- (\tikztotarget) node [transit node,pos=1] {N} }]
+  "Disheveled\\Studio" [x=1,y=1,draw=Green] -- [going=se]
+  an,
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-11}
+\begin{description}
+\item[{\hyperref[sec:req-Shambolic-Shack]{Shambolic Shack}}] ~\\
+  \emph{Go out, SW, SE, N, N, W, N}
+\item[{\hyperref[sec:req-Rec-Room]{Rec Room}}] ~\\
+  \emph{Go S, W, S, S -- Go S, SE* -- Go in}
+\item[{\hyperref[sec:req-The-Meatpacking-Plant]{The Meatpacking Plant}}] ~\\
+  \emph{Go out -- Go NW, SW* -- Go S, E}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}
+\graph[no placement] {
+  "Constabulary\\Road" [x=7,y=-5,exits={n,w,s},tunnel,draw=Green] -- [going=ne]
+  hp/"Hillside\\Path" [x=8,y=-4,exit=sw,draw=Green] -- [going=se]
+  "Outside\\the Plant" [x=9,y=-5,tunnel,draw=Green] -- [going=in]
+  mp/"The\\Meatpacking\\Plant" [x=10.5,y=-6,draw=Green] -- [going=u]
+  "Dusty\\Office" [x=10.5,y=-5,draw=Green],
+  mp -- [going=w]
+  "Bathroom of\\the Meatpacking\\Plant" [x=9,y=-6,draw=Green],
+  hp -- [going=n]
+  fw/"Front\\Walk" [x=8,y=-3,tunnel,draw=Green] -- [going=nw]
+  og/"Outside the\\Greenhouse" [x=6,y=-1,draw=Green] -- [going=ne]
+  bg/"The Cragne\\Manor's Back\\Garden" [x=8,y=1,exit=se,draw=Green],
+  og -- [go={in=\tgmWSW}{o=\tgmENE}],
+  bg -- [going=in]
+  "The\\Shambolic\\Shack" [x=9.5,y=1,entry,draw=Green],
+  fw/"Front\\Walk" [x=8,y=0,tunnel,exit=ne,draw=Green] -- [going=n]
+  "Mudroom" [x=8,y=-2,draw=Green] -- [going=n]
+  f/"Foyer" [x=8,y=-1,draw=Green,exits={n,w}] -- [going=e]
+  "Gallery" [x=9,y=-1,draw=Green] -- [going=n]
+  "Rec\\Room" [x=9,y=0,draw=Green] -- [going=e]
+  "Music\\Room" [x=10,y=0,draw=Green],
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-12}
+\begin{description}
+\item[{\hyperref[sec:req-Curiosity-Shop]{Curiosity Shop}}] ~\\
+  \emph{Go W, down}
+\item[{\hyperref[sec:req-Amorphous-Tunnel]{Amorphous Tunnel}}] ~\\
+  \emph{Go W}
+\item[{\hyperref[sec:req-Narrow-Straits]{Narrow Straits}}] ~\\
+  \emph{Go W}
+\item[{\hyperref[sec:req-Subterranean-Tunnel]{Subterranean Tunnel}}] (optional)\\
+  \emph{Go up, S -- Go NW, N* -- E}
+\item[{\hyperref[sec:req-Backwater-Public-Library]{Backwater Public Library}}] ~\\
+  \emph{Go W -- Go S, E, E* -- Go N}
+\item[{\hyperref[sec:req-The-Invisible-Worm]{The Invisible Worm}}] ~\\
+  \emph{Go S, E -- Go NE, N* -- Go NW, in}
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{adjustbox}{max width=\textwidth,center}
+\sffamily\footnotesize
+\begin{gamemap}[set grid={9em}{6em}]
+\graph [no placement] {
+  ub/"Under the\\Bridge" [x=5,y=-5.25,exit={d=\tgmSE},draw=Green] -- [going=s]
+  "River\\Walk" [x=5,y=-6,tunnel,draw=Green] -- [going=nw]
+  ts/"Town\\Square" [x=4,y=-5,exits={sw,w},draw=Green],
+  "Backwater\\Public\\Library" [x=5,y=-4,draw=Green] -- [going=w]
+  ol/"Outside\\the Library" [x=4,y=-4,exits={nw,w},tunnel,draw=Green] -- [going=s]
+  ts -- [going=e]
+  "Bridge" [x=5,y=-4.7,draw=Green] -- [going=e]
+  op/"Outside\\Pub" [x=6,y=-5,exit=w,draw=Green] -- [going=e]
+  "Constabulary\\Road" [x=7,y=-5,entry,exits={n,ne},draw=Green] -- [going=s]
+  ct/"Courtyard" [x=7,y=-6,draw=Green] -- [going=e]
+  "Curiosity\\Shop" [x=8,y=-6,draw=Green],
+  op -- [going=n]
+  "The\\Invisible\\Worm" [x=6,y=-4,draw=Green],
+  ct -- [going=d]
+  { [y=-7]
+  at/"Amorphous\\Tunnel" [x=7,exit=ne,draw=Green] -- [going=w]
+  "Narrow\\Straits" [x=6,draw=Green] -- [going=w]
+  "Subterranean\\Tunnel" [x=5,exit=nw,draw=Green] -- [go={u=\tgmNE}{d=\tgmSE}]
+  ub
+  }
+};
+\end{gamemap}
+\end{adjustbox}
+
+\vspace*{\stretch{1}}
+\newpage\phantomsection\label{sec:route-13}
+\begin{description}
+\item[{\hyperref[sec:req-Greenhouse]{Greenhouse}}] ~\\
+  \emph{Go out, SE, N, N, W}
+\item[{\hyperref[sec:req-Court]{Court}}] ~\\
+  \emph{Go E -- Go N, up, E, E, E, up* -- Go S, SE}
+\item[{\hyperref[sec:req-Abandoned-Nursery]{Abandoned Nursery}}] ~\\
+  \emph{Go NW, N -- Go down, W, W, W, down* -- Go N, E}
+\item[{\hyperref[sec:req-Sitting-Room]{Sitting Room}}] ~\\
+  \emph{Go W, S, S, S, S -- Go S, SW, W, W, W, W* -- Go in, up}
+\item[{\hyperref[sec:req-Steeple]{Steeple}}] ~\\
+  \emph{Go down, out -- Go N, N, N*}
+\item[{\hyperref[sec:req-Train-Station-Lobby]{Train Station Lobby}}] ~\\
+  \emph{Go E}
+\item[{\hyperref[sec:req-Station-Security-Room]{Station Security Room}}] ~\\
+  \emph{Go W -- Go S, S, S, NE, NE* -- Go SE}
+\item[{\hyperref[sec:req-Shack-Exterior]{Shack Exterior}}] (door)\\
+  \emph{Go in}
+\item[{\hyperref[sec:req-Inside-the-Shack]{Inside the Shack}}] ~\\
+  \emph{Go out, SE -- Go S, E, E, E, NE, N, N, N, N, up, E, E, E, up* -- Go E, SE}
+\item[{\hyperref[sec:req-Observatory]{Observatory}}]
+\end{description}
+
+\vspace*{\stretch{1}}
+\begin{center}
+\emph{See the full game maps in \cref{sec:full-map}.}
+\end{center}
+
+\vspace*{\stretch{1}}
+\newpage
+\section{Room requirements and objectives}\label{sec:sum}
+
+\subsection{Railway Platform}\label{sec:req-Railway-Platform-0}
+
+You will find a locked item and a trapped object.
+Now you have one or two things to look out for on your travels.
+
+You don't need to take any of the items here with you (yet).
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Train Station Lobby}\label{sec:req-Train-Station-Lobby-0}
+
+At this point, all you need is the coffee.
+
+You'll need to find a key for the green door elsewhere.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Train Station Restroom}\label{sec:req-Train-Station-Restroom}
+
+There's an object in here that you need.
+
+For the solution to this room, see \cref{sec:sol-Train-Station-Restroom}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Exterior of Train Station}\label{sec:req-Exterior-of-Train-Station}
+
+There is one item here you should take with you --
+for further information about it, see \cref{sec:nb-doll} --
+and another one that you should use and can then drop.
+
+You need to get past that woman somehow\xelip
+
+For the solution to this room, see \cref{sec:sol-Exterior-of-Train-Station}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Milkweed}\label{sec:req-Milkweed}
+Hidden in this area is key piece of information.
+
+There is indeed a lot of information here.
+If you would like to know what sort of thing you need to look out for,
+see the note in \cref{sec:nb-Variegated-Court}.
+
+For the solution to this room, see \cref{sec:sol-Milkweed}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Churchyard}\label{sec:req-Churchyard}
+
+Your mission here is to gain entry into the mausoleum.
+
+There is also an item here that you need to take with you.
+
+Do not be alarmed by the fact that you silently acquire aviator goggles
+on entering the location and lose them again on leaving. This sort of thing
+happens.
+
+For the solution to this room, see \cref{sec:sol-Churchyard}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Mausoleum}\label{sec:req-Mausoleum}
+
+Take the book away with you.
+
+For the solution to this room, see \cref{sec:sol-Mausoleum}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Dim Recesses of the Forest}\label{sec:req-The-Dim-Recesses-of-the-Forest}
+
+You need to learn a key piece of information here.
+
+For the solution to this room, see \cref{sec:sol-The-Dim-Recesses-of-the-Forest}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Shack Exterior}\label{sec:req-Shack-Exterior-0}
+
+You need to obtain an item from this room.
+
+For the solution of how to do this, see \cref{sec:sol-Shack-Exterior-0}.
+
+You cannot gain entry to the shack at this point.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Outside the Library}\label{sec:req-Outside-the-Library}
+
+Read the contents of the noticeboard.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Public Library}\label{sec:req-Public-Library-0}
+
+There is an item here you will need, but you can't get it yet.
+
+You can, however, get a very useful \enquote{shopping list} of items you need
+to collect before returning.
+
+Even if you have some of those items already, you may as well hang on to them
+for now.
+
+For more details, see the steps in \cref{sec:sol-Public-Library-0}
+and the note in \cref{sec:nb-library-books}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Estate Agent's Office}\label{sec:req-Estate-Agent's-Office}
+
+The introduction to this room mentions a couple of items you didn't have before.
+Check your inventory and examine them before doing anything else.
+(This is not strictly necessary but it's a nice touch.)
+There's a note about one of the items in \cref{sec:nb-backpack}.
+
+I don't need to tell you what else to do here as the narrative does a very good job of that itself.
+
+When you have solved the room and thoroughly examined the stolen (reclaimed?)
+\emph{something} -- you'll know what I'm getting at when you do it --
+there's a note about it in \cref{sec:nb-cyphered-message}.
+
+For the solution to this room, see \cref{sec:sol-Estate-Agent's-Office}.
+If you just want to know where to start, there's a hint at the bottom of this page.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\vfill
+You'd heard about one property in the game before you even started playing.
+
+\newpage
+\subsection{Town Square}\label{sec:req-Town-Square-0}
+
+For interest, have a chat with the man by the bridge.
+
+For a visualisation of the emblem, see the note in \cref{sec:nb-town-square-emblem}.
+You will pick up a clue about what to do with this later on.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{River Walk}\label{sec:req-River-Walk}
+
+There is a item hidden here that you need for another location.
+
+You don't need anything from anywhere else,
+but you may get a more obvious hint if you have something sharp on you.
+If you haven't come across one, you could skip ahead to the Bridge
+and come back here after completing Backwater Jail.
+
+For the solution to this room, see \cref{sec:sol-River-Walk}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Under the Bridge}\label{sec:req-Under-the-Bridge-0}
+
+You need to learn a key piece of information here.
+
+For the solution, see \cref{sec:sol-Under-the-Bridge-0}.
+
+You cannot open the hatch at this point.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Railway Platform}\label{sec:req-Railway-Platform}
+
+You need the ID card from River Walk.
+
+You should now be able to get the item out of the vending machine.
+
+For the solution to this room, see \cref{sec:sol-Railway-Platform}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{The Old Well}\label{sec:req-The-Old-Well}
+
+You need the golden eyepiece from the Railway Platform vending machine.
+
+Your aim here is to open the well.
+
+You will probably need to make notes to solve this room,
+and make liberal use of \textsc{undo}.
+There are many ways to end the game here, and they are worth reading.
+
+For the solution to this room, see \cref{sec:sol-The-Old-Well}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Circular Room}\label{sec:req-Circular-Room}
+
+If you were exhausted permuting your way through the previous room,
+this one may come as something of a relief.
+
+Examine the stones and take the cash.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Bridge}\label{sec:req-Bridge}
+
+You need the flashlight from the Churchyard.
+
+Your aim is simply (!) to get across the bridge.
+
+For the solution to this room, see \cref{sec:sol-Bridge}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+It is rooms like this (and the Circular Room) that make you appreciate
+how astonishingly consistent the rest of the game feels.
+
+\newpage
+\subsection{Outside Pub}\label{sec:req-Outside-Pub}
+
+There is vital information in the newspaper,
+but how can you get one (using only what's already here)?
+
+For the solution to this room, see \cref{sec:sol-Outside-Pub}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Constabulary Road}\label{sec:req-Constabulary-Road}
+
+There is nothing in particular to solve here, but I recommend examining
+everything and talking to the man. If you manage to end the game here and
+find the ending a bit odd, I think that's because it has leaked in from another
+room.
+
+The north gate is closed but unlocked.
+
+If you think you ought to be able to unblock the passage south,
+hold that thought: you can't do anything about it at the moment.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Jail}\label{sec:req-Backwater-Jail}
+
+There is a library book here you need to liberate.
+
+For the solution to this room, see \cref{sec:sol-Backwater-Jail}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Padded Cell}\label{sec:req-Padded-Cell}
+
+A classic escape room scenario!
+
+While you are here, make sure you discover a clue about another Alderman.
+
+For the solution to this room, see \cref{sec:sol-Padded-Cell}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Outside the Plant}\label{sec:req-Outside-the-Plant}
+
+You need to gain entry to the meatpacking plant.
+
+For the solution to this room, see \cref{sec:sol-Outside-the-Plant}.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Dusty Office}\label{sec:req-Dusty-Office}
+
+There are clues about another Alderman here.
+
+For the solution to this room, see \cref{sec:sol-Dusty-Office}.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Bathroom of the Meatpacking Plant}\label{sec:req-Bathroom-of-the-Meatpacking-Plant}
+
+There is information about another Alderman here.
+
+For the solution to this room, see \cref{sec:sol-Bathroom-of-the-Meatpacking-Plant}.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Hillside Path}\label{sec:req-Hillside-Path}
+
+The woman can give you an idea of what to expect in one of the rooms in the Manor.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Front Walk}\label{sec:req-Front-Walk}
+
+There's no problem to solve; just enjoy the descriptions.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Cragne Family Plot}\label{sec:req-Cragne-Family-Plot}
+
+Believe it or not, there is a library book hidden somewhere here.
+
+For the solution to this room, see \cref{sec:sol-Cragne-Family-Plot}.
+
+You cannot open the crypt door at this point.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Back Garden}\label{sec:req-Back-Garden}
+
+In amongst the vines is a shack; you need to find your way into it.
+
+For the solution to this room, see \cref{sec:sol-Back-Garden}.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Shambolic Shack}\label{sec:req-Shambolic-Shack-0}
+
+There is a key to find here.
+
+There is something else as well but you won't be able to get at it yet.
+
+For the solution, see \cref{sec:sol-Shambolic-Shack-0}.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Under the Bridge}\label{sec:req-Under-the-Bridge}
+
+Unlock the hatch.
+If you're not sure which key to use, see \cref{sec:sol-Under-the-Bridge}.
+
+Now is a great time to tidy up your inventory.
+
+\hyperref[sec:route-4]{\emph{Return to route}}
+
+\newpage
+\subsection{Tunnel Entrance}\label{sec:req-Tunnel-Entrance}
+
+There are two linked puzzles here. One is to sort out the lighting and the
+other is to open a secret door.
+
+For the solution to this room, see \cref{sec:sol-Tunnel-Entrance}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Small Chamber}\label{sec:req-Small-Chamber}
+
+There is a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Small-Chamber}.
+It is a bit finicky so I have concentrated on the bits that might trip you up,
+without revealing the exact answer to the puzzle.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Tiny Windowless Office}\label{sec:req-Tiny-Windowless-Office}
+
+There is a key to find and also a clue about another Alderman.
+
+You cannot unlock the north door at this point.
+
+For the solution to this room, see \cref{sec:sol-Tiny-Windowless-Office}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Mudroom}\label{sec:req-Mudroom}
+
+There is an item here you need to take with you.
+
+There is also a door to unlock, for which you will need a key from another room.
+
+For the solution to this room, see \cref{sec:sol-Mudroom}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Foyer}\label{sec:req-Foyer}
+
+There is a hidden item in this room, but I never found a use for it.
+Perhaps you can discover one?
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Landing at the Bottom of Stairs}\label{sec:req-Landing-at-the-Bottom-of-Stairs}
+
+There is a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Landing-at-the-Bottom-of-Stairs}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Top of Stairs}\label{sec:req-Top-of-Stairs}
+
+There is a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Top-of-Stairs}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Nursery -- Hillside Path -- Carol's Room}\label{sec:req-Nursery--Hillside-Path--Carol's-Room}
+
+You need to be carrying the teapot from the Mudroom to enter the Nursery.
+
+You will, eventually, get a vital clue from here,
+but there's a bit of to-ing and fro-ing to do as you resolve the relationship
+between Christabell and Carol.
+
+For the solution to this room, see \cref{sec:sol-Nursery--Hillside-Path--Carol's-Room}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Hallway South}\label{sec:req-Hallway-South}
+
+There is a library book in this location.
+
+I did not find a use for the remaining item(s).
+
+For the solution, see \cref{sec:sol-Hallway-South}.
+
+You will need to find the key for the south door somewhere else.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Library}\label{sec:req-Library}
+
+One of the books here belongs to the public library rather than this one.
+(It is not one of the obvious ones.)
+
+For the solution to this room, see \cref{sec:sol-Library}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Study}\label{sec:req-Study}
+
+While there are some evocative descriptions here,
+it is true that the key is all you need.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Gallery}\label{sec:req-Gallery}
+
+You need to unblock the passage north.
+
+For the solution to this room, see \cref{sec:sol-Gallery}.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Music Room}\label{sec:req-Music-Room}
+
+You can learn about another Alderman here.
+
+Once you have established what the podium does, you may find the
+diagram in \cref{sec:nb-Music-Room} helpful.
+
+For the solution to this room, see \cref{sec:sol-Music-Room}.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Court}\label{sec:req-Court-0}
+
+At this point, you just need to take the key.
+
+If you're interested, here's what the colours mean:
+
+\begin{itemize}
+\item Xanthic: tending towards yellow
+\item Mazarine: deep purplish blue
+\item Rufous: reddish brown
+\item Croceate: saffron yellow
+\item Icterine: yellowish, or marked with yellow
+\item Puce: dark red to purplish brown
+\item Fulvous: tawny; reddish, brownish yellow
+\item Fuscous: dusky brownish grey
+\item Niveous: snowy white
+\item Cesious:  bluish grey
+\item Griseous: white mottled with black or brown
+\item Eburnean: ivory
+\end{itemize}
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Cragne Family Plot}\label{sec:req-Cragne-Family-Plot-1}
+
+You need a key from another location to open the Crypt.
+
+If you are not sure which one, see \cref{sec:sol-Cragne-Family-Plot-1}.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Crypt}\label{sec:req-Crypt}
+
+You can learn about another Alderman here.
+
+For the solution to this room, see \cref{sec:sol-Crypt}.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Town Square}\label{sec:req-Town-Square}
+
+You need to have completed the Nursery\slash Hillside Path\slash Carol's Room,
+and obtained a \hyperref[sec:nb-picture-riddle]{worn out, decaying picture}
+before tackling this room.
+
+There is an item hidden here that contains a clue you need for another location.
+
+For the solution to this room, see \cref{sec:sol-Town-Square}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Drinking Fountain}\label{sec:req-Drinking-Fountain}
+
+You need to have read 9 library books before you're able to tackle this area.
+You'll be able to tell if you've done this because a well dressed man will be here.
+
+There is another library book hidden in this location.
+
+For the solution to this room, see \cref{sec:sol-Drinking-Fountain}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Exterior}\label{sec:req-Church-Exterior}
+
+You need a key from another location to open the Church door. Keep hold of it.
+
+If you are not sure which key that is, see \cref{sec:sol-Church-Exterior}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Lobby-Space (Narthex)}\label{sec:req-Church-Lobby-Space}
+
+There is a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Church-Lobby-Space}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Steeple}\label{sec:req-Steeple-0}
+
+All you need to do at this point is retrieve the key.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Chapel}\label{sec:req-Chapel}
+
+You need a key from another location to open the south door.
+
+You will also need an item from an earlier room to the release the object that is hidden here.
+That object will come in handy a bit later on.
+
+For the solution to this room, see \cref{sec:sol-Chapel}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Basement}\label{sec:req-Church-Basement}
+
+You need the clue from the Town Square in order to discover an important message.
+
+For the solution to this room, see \cref{sec:sol-Church-Basement}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Dining Room}\label{sec:req-Dining-Room}
+
+There is nothing you particularly need from this room,
+but there's something interesting to do.
+
+For the solution to this room, see \cref{sec:sol-Dining-Room}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Kitchen}\label{sec:req-Kitchen}
+
+You need a key from another location to open the trap door.
+
+If you are not sure which one, see \cref{sec:sol-Kitchen}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Basement}\label{sec:req-Basement}
+
+Believe it or not, there are lots of books hidden here,
+one of which you need to take away with you.
+
+For the solution to this room, see \cref{sec:sol-Basement}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Cold Storage}\label{sec:req-Cold-Storage}
+
+You can learn about another Alderman here.
+
+For the solution to this room, see \cref{sec:sol-Cold-Storage}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Pantry}\label{sec:req-Pantry}
+
+There is a special \hyperref[sec:nb-Church-Basement]{recorded message}
+you need to have heard before tackling this room.
+
+It will help you discover a clue you'll need for another room.
+You will know it when you see it because it rhymes.
+
+For the solution to this room, see \cref{sec:sol-Pantry}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Workroom}\label{sec:req-Workroom}
+
+By the time you have finished, there will be a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Workroom}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Wine Cellar}\label{sec:req-Wine-Cellar}
+
+There is an object hidden here that you need,
+and you also need to unblock the west exit.
+
+For the solution to this room, see \cref{sec:sol-Wine-Cellar}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Laboratory}\label{sec:req-Laboratory}
+
+You need an object from another room in order to resolve this room
+satisfactorily, but I can't tell you which one without giving the game away.
+
+There is an object here that you need.
+
+For the solution to this room, see \cref{sec:sol-Laboratory}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Boiler Room}\label{sec:req-Boiler-Room}
+
+There is a library book hidden here.
+
+For the solution to this room, see \cref{sec:sol-Boiler-Room}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Malign Tunnel}\label{sec:req-Malign-Tunnel}
+
+There's nothing to do here except enjoy the descriptions.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Courtyard}\label{sec:req-Courtyard}
+
+Unblock the exit north. You don't really need to do this but it's convenient
+and ties up a loose end.
+
+For the solution to this room, see \cref{sec:sol-Courtyard}.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Hallway South}\label{sec:req-Hallway-South-1}
+
+You need a key from another location to open the south door.
+
+If you are not sure which one, see \cref{sec:sol-Hallway-South-1}.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Balcony}\label{sec:req-Balcony}
+
+There is an object hidden here that you need.
+
+For the solution to this room, see \cref{sec:sol-Balcony}.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Upstairs Hall, North End}\label{sec:req-Upstairs-Hall-N}
+
+This room goes through three distinct states.
+In the initial state you can't do anything.
+
+In the second state, you can discover clues about another Alderman.
+
+In the third state, you can resolve the matter of the northeast door.
+
+You need a key from elsewhere to unlock the east door.
+
+For the solution to this room, see \cref{sec:sol-Upstairs-Hall-N}.
+
+\hyperref[sec:route-5]{\emph{Return to route, having established requirements}}
+
+\hyperref[sec:route-9]{\emph{Return to route, having unlocked the east door}}
+
+\newpage
+\subsection{Master Bedroom}\label{sec:req-Master-Bedroom}
+
+You can, if you like, just pass through this room,
+but where would be the fun in that?
+
+As always,
+unless you actually end the game here there is no reason to \textsc{undo}.
+
+For the solution to this room, see \cref{sec:sol-Master-Bedroom}.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Shadowy Closet}\label{sec:req-Shadowy-Closet}
+
+You need an item from another area to solve this room.
+
+If you are not sure which one, see \cref{sec:sol-Shadowy-Closet}.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Attic}\label{sec:req-Attic}
+
+There is no puzzle to solve here, just get the items.
+
+There is a note about the walkie-talkie in \cref{sec:nb-walkie-talkie}.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Disheveled Studio}\label{sec:req-Disheveled-Studio}
+
+You can find a library book with relative ease here.
+
+But don't rush off, because there's another important item here that the book will help you to obtain.
+
+For the solution to this room, see \cref{sec:sol-Disheveled-Studio}.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Abandoned Nursery}\label{sec:req-Abandoned-Nursery-0}
+
+Examine the vacuum cleaner. The missing component is not in this room.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Invasive Library}\label{sec:req-Invasive-Library}
+
+One of these books belongs to the public library.
+
+For the solution to this room, see \cref{sec:sol-Invasive-Library}.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Science Tower}\label{sec:req-Science-Tower}
+
+You can pick up two items here that you don't use within the room itself.
+
+You only need one of them,
+but I don't want to spoil things by telling you which one, so take them both.
+
+For the solution to this room, see \cref{sec:sol-Science-Tower}.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Branching Corridor}\label{sec:req-Branching-Corridor}
+
+Unblock the southeast exit.
+
+For the solution to this room, see \cref{sec:sol-Branching-Corridor}.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Shambolic Shack}\label{sec:req-Shambolic-Shack}
+
+There is an item hidden here you need to retrieve.
+
+You should absolutely, definitely save before starting work on this puzzle as,
+due to a bug in the \textsc{take back} command (at least up to Release 10)
+you can make the game unwinnable. If you get stuck, \textsc{restore} instead.
+
+For the solution to this room, see \cref{sec:sol-Shambolic-Shack}.
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{Rec Room}\label{sec:req-Rec-Room}
+
+You need a key from another room to make progress here.
+
+At the end you will find an item that clearly belongs in a different room.
+
+For the solution to this room, see \cref{sec:sol-Rec-Room}.
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{The Meatpacking Plant}\label{sec:req-The-Meatpacking-Plant}
+
+You need something designed to cleave meat to complete your task here.
+
+Once you have, you'll find an item containing a clue you'll need for another room.
+
+For the solution to this room, see \cref{sec:sol-The-Meatpacking-Plant}.
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{Curiosity Shop}\label{sec:req-Curiosity-Shop}
+
+Contrary to how things normally go in such shops, you need to bring something
+curious and come away with something perhaps a little more mundane.
+
+For the solution to this room, see \cref{sec:sol-Curiosity-Shop}.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Amorphous Tunnel}\label{sec:req-Amorphous-Tunnel}
+
+You need a key from another location to open the west door. Keep hold of it.
+
+If you are not sure which one, see \cref{sec:sol-Amorphous-Tunnel}.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Narrow Straits}\label{sec:req-Narrow-Straits}
+
+You need a key from another location to open the west door.
+
+You need a second key from elsewhere to retrieve an item hidden in this area.
+
+For the solution to this room, see \cref{sec:sol-Narrow-Straits}.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Subterranean Tunnel}\label{sec:req-Subterranean-Tunnel}
+
+If you are following the recommended route,
+you just solved the required aspect of this room from the other side.
+Otherwise the comments about the
+\hyperref[sec:req-Amorphous-Tunnel]{Amorphous Tunnel} apply.
+
+There is also the matter of the woman.
+You should probably find out what's going on with her,
+otherwise you'll forever be wondering.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Public Library}\label{sec:req-Backwater-Public-Library}
+
+I hope you already worked out on your first visit what you need to do here:
+return Peter's overdue library books and take out a new one.
+
+Sounds quite mundane when I put it like that, doesn't it?
+
+For the solution to this room, see \cref{sec:sol-Backwater-Public-Library}.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{The Invisible Worm}\label{sec:req-The-Invisible-Worm}
+
+There's an item here you need to purloin.
+
+You could, possibly, solve this room as a standalone puzzle,
+but if you are in possession of insider knowledge it will save an awful lot of guesswork.
+
+For the solution to this room, see \cref{sec:sol-The-Invisible-Worm}.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Greenhouse}\label{sec:req-Greenhouse}
+
+The main item you need to solve the puzzle is already in the room,
+but you need an item from elsewhere to fix it.
+
+The prize for completing this room is a cardboard box, or rather,
+what's inside it.
+
+For the solution to this room, see \cref{sec:sol-Greenhouse}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Court}\label{sec:req-Court}
+
+By now you should have all the information you need to solve the puzzle.
+Sorry for making you wait so long.
+
+Having solved it, you will release an important artefact.
+
+For the solution to this room, see \cref{sec:sol-Court}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Abandoned Nursery}\label{sec:req-Abandoned-Nursery}
+
+The main item you need to solve the puzzle is already in the room,
+but you need an item from elsewhere to fix it.
+
+There is an item hidden here that you need for\xelip
+well, take a guess. It's not the Observatory, it's not the Shack Exterior,
+it's not the Train Station Lobby, it's not the Steeple\xelip
+
+For the solution to this room, see \cref{sec:sol-Abandoned-Nursery}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Sitting Room}\label{sec:req-Sitting-Room}
+
+You need the letter opener to solve this room.
+
+You should leave with something else metallic instead.
+
+For the solution to this room, see \cref{sec:sol-Sitting-Room}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Steeple}\label{sec:req-Steeple}
+
+While you could brute force this room,
+you do have the \hyperref[sec:nb-Pantry]{clue from the Pantry} to help you.
+
+You need to make a note of the textual description of the correct pattern.
+
+For the solution to this room, see \cref{sec:sol-Steeple}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Train Station Lobby}\label{sec:req-Train-Station-Lobby}
+
+You need a key from another location to open the east door.
+
+If you are not sure which one, see \cref{sec:sol-Train-Station-Lobby}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Station Security Room}\label{sec:req-Station-Security-Room}
+
+You need to obtain a key from this location.
+
+For the solution to this room, see \cref{sec:sol-Station-Security-Room}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Shack Exterior}\label{sec:req-Shack-Exterior}
+
+You just need to unlock the door with tarnished brass key
+from the Station Security Room.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Inside the Shack}\label{sec:req-Inside-the-Shack}
+
+Look, you've found Peter! Hurrah.
+
+Perhaps you don't need that ritual from the grimoire after all.
+
+If you have only been taking the thing you need from each room,
+you should have only one item left that is (\emph{a}) unused and
+(\emph{b}) not mentioned in the grimoire. Use that.
+
+For the solution to this room, see \cref{sec:sol-Inside-the-Shack}.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Observatory}\label{sec:req-Observatory}
+
+Ah well, it turns out you really do need the ritual.
+To recap, that means you need
+
+\begin{itemize}
+\item the horn of the black goat (from the Court);
+\item the grimoire (from Backwater Public Library);
+\item knowledge of the right constellation (from the Steeple);
+\item a divine pustule (from the Narrow Straits);
+\item Peter's most treasured memento.
+\end{itemize}
+
+One of the aspects of the puzzle is to work out what the memento is.
+
+For the solution to that little mystery,
+and for a bit of help assembling the right constellation,
+see \cref{sec:sol-Observatory}.
+
+The page after that section deals with the final conclusion of the game.
+
+\newpage
+\section{Room solutions}\label{sec:sol}
+
+\subsection{Train Station Restroom}\label{sec:sol-Train-Station-Restroom}
+
+Open the combination lock using the code in the closet
+to get a jar containing a shape-shifting creepy crawlie.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Exterior of Train Station}\label{sec:sol-Exterior-of-Train-Station}
+
+Open the bin and retrieve the doll and the book.
+
+Read the book to learn coffee divination. You can drop the book after that.
+
+For more information about the doll, see \cref{sec:nb-doll}.
+
+Turn the doll's head to the scowling face, and pull the string until the woman becomes alarmed.
+Give the insect jar to the woman to scare her away.
+Unfortunately, she doesn't take it with her; feel free to drop it.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Milkweed}\label{sec:sol-Milkweed}
+Push shack over to reveal altar. Examine the altar, then the cavity.
+
+Get the milkweed leaf that works as a mask. Wear it as protection.
+
+Lie on the altar. Examine the shelf and read the literature provided.
+If you want to know which pieces of information to make a note of,
+see the note in \cref{sec:nb-Variegated-Court}.
+
+To solve the optional puzzle, get the sphere, examine it and the slot.
+You need a coin.
+
+Search the tracks to find one. Put it in the sphere to obtain an athame (dagger).
+Use it to cut the tendril attaching the earworm to your brain.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Churchyard}\label{sec:sol-Churchyard}
+
+Get the flashlight and retain it for later.
+
+Try to open the mausoleum door. You need more leverage.
+
+Examine the fence. You'll find something you can use like a crowbar (\textsc{open door with}).
+
+One nice touch here is that the mausoleum is inscribed \enquote{VERL C}
+(Verlac was the family in \emph{Anchorhead}).
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Mausoleum}\label{sec:sol-Mausoleum}
+
+There's a book. It seems you should read it, and you can't read it without taking it.
+(And you do need to take it away with you.)
+
+The mirrors are worth a few looks each but play no part in the solution.
+
+This is one of those occasions where the game tries to put you off doing what you need to do.
+Just keep on taking the book until it gives up trying to fight you.
+
+If this is your first library book, you acquire a haunting presence at this point.
+If you want to know what that's all about and if you should be worried,
+see \cref{sec:nb-library-books}.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Dim Recesses of the Forest}\label{sec:sol-The-Dim-Recesses-of-the-Forest}
+
+When the leaves arrive, search them for a stone.
+
+Skim the stone.
+
+Uh oh. Something scary will happen.
+
+If you hold your nerve, you get a locket out of it.
+
+Examine it. Piece together your experience for a key fact about another of those
+people I told you about in \cref{sec:nb-Variegated-Court}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Shack Exterior}\label{sec:sol-Shack-Exterior-0}
+
+Reassemble the scraps into a page.
+
+Give it to the doll in exchange for the journal.
+
+Read it.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Public Library}\label{sec:sol-Public-Library-0}
+
+Examine the jacket to get a library card.
+
+Give the card to librarian to get a list of all books you need to return.
+
+It's probably safest to leave the card here; you won't want to lose it on your
+travels.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Estate Agent's Office}\label{sec:sol-Estate-Agent's-Office}
+
+For interest, examine the telegram and the backpack.
+
+Ask the woman about Cragne Manor to reveal the \emph{Twin Hearts} book you need to reclaim.
+
+Now you've established a rapport, you can use the shortcut \enquote{\textsc{a}
+\emph{subject}} for \enquote{\textsc{ask woman about} \emph{subject}}.
+
+You can't steal the book while she's looking, so ask about another property,
+then try to steal it while she's at the filing cabinet.
+
+You now know what you're up against. On this occasion it is not madness to do
+the same thing over and over again, expecting different results.
+In total you need to ask about 6 properties to hide the book again,
+and a seventh in order to steal the book.
+
+Here are some of places you can ask about:
+
+\begin{multicols}{2}
+\begin{itemize}
+\item The three properties listed in the pamphlet
+\item The station
+\item The church
+\item The library
+\item The estate agent
+\item The pub
+\item The jail
+\item The meatpacking plant
+\item The curiosity shop
+\end{itemize}
+\end{multicols}
+
+I suppose the intention here is for you to chip away at this room as you
+progress through the game, but it's more convenient to do it in one go.
+
+If you just concentrate on getting the book, though, you'll miss out on a wealth of
+entertaining interaction. Examine the folders, and ask questions about the content.
+The information you can learn about the pub is surprisingly relevant,
+for example. But do not ask about the Gulf Stream unless you really enjoy scrolling.
+
+Once you're outside, read the book to the end, then see \cref{sec:nb-cyphered-message}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{River Walk}\label{sec:sol-River-Walk}
+
+Get the pole and fish the river with it to reveal a lobster trap.
+
+You need to cut the twine with something in this area.
+The best hint for this comes if you try to cut the twine with something from a different area.
+You could, for example, go to Milkweed, put the imaginary athame in your backpack,
+bring it back here and try to use it on the thin loops.
+
+There is a more obscure hint in the soggy tome.
+
+The solution is to put the sick lobster out of its misery with the rock.
+On doing so, you will be rewarded with a sharp shard of shattered carapace.
+Use it to cut the thin loops of twine,
+after which you can open the trap and get the ID card.
+
+You can leave the rock, the shard and the pole behind.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Under the Bridge}\label{sec:sol-Under-the-Bridge-0}
+
+Examine the river.
+
+Examine the payphone.
+If you try it enough times, you should be able to find a phone number among the graffiti,
+flanked by loosely drawn stars.
+Search the coin return to find a quarter.
+
+When you make your call, examine the river again to discover a clue about another Alderman.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{Railway Platform}\label{sec:sol-Railway-Platform}
+
+Here is one solution. You may find others.
+
+Examine the rat to discover a brass winding key.
+
+Use the ID card to open the Lost and Found locker.
+
+Examine Peter's suitcase to see that it has a combination lock.
+Examine Peter's wristwatch for a clue.
+
+Examine the mystery box, then compare what you find to other features of the platform:
+you are looking for a time of day.
+
+Stand on the bench and use the brass winding key to set the station clock to that time.
+
+Once you have opened the box, get the coin and compare it to the coin slot on the vending machine.
+
+Use the coin to retrieve the bubble, and therefore the eyepiece.
+
+The eyepiece is all you need to take from this room,
+but what sort of wife would you be if you left Peter's things lying around the place?
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{The Old Well}\label{sec:sol-The-Old-Well}
+
+Examine the oak, and look in knothole to find a parcel containing mouldy journal and battery.
+The battery fits the eyepiece.
+The journal explains both the mechanics of the puzzle and what the eventual solution is,
+albeit cryptically.
+
+Examine the puddle, the wall, the root and the quartz.
+Then wear the eyepiece and examine them again.
+Create microphids by prodding the cylinder,
+then three coloured arches in succession, then the wooden arch.
+Happily, the game gives you shortcuts to make this process less tedious.
+
+There are 27 types of microphid you can summon (C~=~cliffs, F~=~forest, O~=~ocean, P~=~plain):
+
+\begin{itemize}
+\item
+These ones will kill you. Use \textsc{undo} then prod them to remove them:\newline
+\textbf{CFC},\enskip
+\textbf{CFO},\enskip
+\textbf{COC},\enskip
+\textbf{CPO},\enskip
+\textbf{FCO},\enskip
+\textbf{FPO},\enskip
+\textbf{OCO},\enskip
+\textbf{OCP},\enskip
+\textbf{OFO},\enskip
+\textbf{OPO}.
+
+\item
+These ones will wander off, each in their own special way:\newline
+\textbf{CFP},\enskip
+\textbf{COP},\enskip
+\textbf{CPC},\enskip
+\textbf{FCP},\enskip
+\textbf{FOC},\enskip
+\textbf{FOF},\enskip
+\textbf{FOP},\enskip
+\textbf{FPC},\enskip
+\textbf{OFC},\enskip
+\textbf{OFP},\enskip
+\textbf{OPC}.
+
+\item
+The first three of these you summon will stay peacefully with you:\newline
+\textbf{COF},\enskip
+\textbf{CPF},\enskip
+\textbf{FCF},\enskip
+\textbf{FPF},\enskip
+\textbf{OCF},\enskip
+\textbf{OPF}.
+\end{itemize}
+
+As per the hint in the journal, summon the slime ape (FPC) to coat the well with glue, and three friendly microphids to protect you.
+
+When you have done all the summoning you wish to do,
+summon the fearsome pteranodon (FCO).
+Because of your precautions, it will fly off with the well cap instead of killing you.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Bridge}\label{sec:sol-Bridge}
+
+If you want to play this realistically, you might want to seal everything
+(except the flashlight) safely inside your backpack for the duration of the puzzle.
+But I don't think it matters.
+
+Examine the metal thingy. Open it and throw the rope into the river.
+
+For full benefit you might want to try climbing down into the river unaided,
+then solve the first issue, then the second issue. If you want to do this in the
+fewest possible moves, intuitively solve the second issue first, then the first.
+
+To solve the first issue, as you hang under the bridge,
+note the lung-like appearance of the weed and the strange behaviour of the bat.
+Get the weed, eat its spores, then go down into the river.
+
+To solve the second issue, examine the sculpture on the bridge.
+Replace the dead flashlight battery with a combination of
+(flakes of) the dry vegetation in the brazier and the liquid in the pool.
+
+Once you are safely in the water, examine the bones.
+Enter the skeleton and hit the flat bones to release them.
+
+The bones are too heavy to carry up the rope,
+so put the bones in the claw trap and close it.
+Climb up then pull the rope up after.
+
+Use the bones to repair the bridge.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Outside Pub}\label{sec:sol-Outside-Pub}
+
+Pick up the rusty leg and put it in the handle.
+
+You can then pull the handle enough to break open the box.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Jail}\label{sec:sol-Backwater-Jail}
+
+Examine the computer and monitor to learn the location of the evidence key.
+
+Read the paperwork on the clipboard to get the right name.
+
+Open the file cabinet then \textsc{get} and \textsc{read} the name.
+(The evidence for this case is a library book. I wonder if it's on your list?)
+
+Use the aluminum key to open the locker\xelip
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+When you are next able, look in the locker and retrieve the book. Read it.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Padded Cell}\label{sec:sol-Padded-Cell}
+
+Examine the chest and the lightbulb, and check your inventory.
+Your stuff is in the chest and you're in a strait jacket.
+
+Push the chest to move it under the light.
+
+Stand on the chest and \textsc{hit} the wire mesh (to get it with your teeth
+-- \textsc{get} doesn't work but several other verbs do, e.g. \textsc{headbutt}).
+
+Stand back on the chest and \textsc{hit} the lightbulb.
+
+Get down, put the shard in the crack in the chest and cut yourself free.
+
+You can then retrieve your stuff from the chest.
+
+Examine the walls to reveal a brass button. Examine it more closely.
+Turn it to reveal a trophy and the door lock switch.
+
+You don't need the trophy itself, but you do need to examine it and make a note
+of the description.
+
+Pressing the switch doesn't work; you have to turn it off.
+
+You can now go south and finish off whatever you were doing in
+\hyperref[sec:req-Backwater-Jail]{Backwater Jail}.
+
+\hyperref[sec:route-2]{\emph{Return to route}}
+
+\newpage
+\subsection{Outside the Plant}\label{sec:sol-Outside-the-Plant}
+
+If you try entering the plant, you'll find an unseen presence stops you.
+
+Push the pig corpses to reveal a sheep. Examine it.
+
+\textsc{Open} or \textsc{cut} it to spill the guts.
+Examine the guts, then examine the flies.
+You can't read the guts yourself, but the flies are loud, so listen to them.
+
+Examine the walls (or patterns, or block) and construct the magic name.
+If you are not sure how, see the clue at the bottom of the page.
+
+Use this as a command to release the beast from the hole into the sky.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\vfill
+What letters are missing from the name of the building?
+
+\newpage
+\subsection{Dusty Office}\label{sec:sol-Dusty-Office}
+
+Search the detritus repeatedly. You will find some interesting information and
+eventually a key.
+
+Unlock the cabinet with the key to get a notebook.
+
+You should be able to work out the familiar of another Alderman.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Bathroom of the Meatpacking Plant}\label{sec:sol-Bathroom-of-the-Meatpacking-Plant}
+
+Examine everything outside the stall thoroughly.
+
+Enter the stall and note the missing flush handle.
+Come back out and try to operate the shower or sink.
+You will get what you need, but release the boneless horse.
+Lock yourself in the stall to survive.
+
+Read Juggs and the note that falls from it to get the hint about the candle
+(and some things to look for). Repair the toilet.
+Put the hand candle in the pentagram and light it,
+then sit on the toilet and flush it.
+
+In the space toilet, examine the corpses to get the janitor's key.
+Get the blue journal.
+Get and examine the scroll for instructions and a list of items to find.
+Examine and crank the phonograph to realise you have disposable wax.
+Examine the baby names to realise you have a disposable book.
+Examine the fireplace, light it with the baby names for kindling.
+Put the cylinder on the hearth to melt it, then sculpt it into a horse poppet.
+Flush.
+
+Back in the first stall, use the key to open the closet,
+and get the fur and the foot candle.
+Swap over the foot candle and the hand candle, and light the foot one.
+Flush.
+
+In the Cambrian toilet, get and read Ed's journal,
+and get the key to the blue journal.
+Unlock and read that too;
+eventually you will discover the information you need about an Alderman.
+Take the can of Mountain Dew and milk the trilobite into it.
+Flush.
+
+Put everything except what you need for the spell in your backpack and close it.
+Complete the potion by pouring pepto-bismol into the Mountain Dew can. Drink it.
+I recommend saving at this point.
+
+You can now perform the ritual:
+put the hand or foot candle then the horse poppet on the pentagram,
+wave the fur,
+put Juggs on the pentagram and attack it with the athame,
+then use the magic word.
+
+It doesn't quite work so flush the horse away.
+
+As you leave, you get a different cutscene depending on which candle you used.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Cragne Family Plot}\label{sec:sol-Cragne-Family-Plot}
+
+Open the eastern columbarium to find a silver urn and a key.
+
+Use the urn to bail out the water in the grave (e.g.~\textsc{fill urn},
+\textsc{empty grave}, \textsc{bail grave}).
+
+Descend and dig west to find a pewter box.
+
+Go back up and unlock the box with the urn key to get the book.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Back Garden}\label{sec:sol-Back-Garden}
+
+Examine the building: the way in is blocked with a padlock.
+
+Examine the shelf by the building to find something you can use as weedkiller.
+
+Use this to kill the poison ivy and release the shears.
+
+Examine bird bath. Read the inscription.
+
+Examine the pond and clear the vines from it.
+Examine the contents thoroughly to discover a screwdriver.
+
+Examine the fountain, then the cherub, then look in the fountain.
+Use the screwdriver to free the key.
+
+Unlock the padlock with it.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Shambolic Shack}\label{sec:sol-Shambolic-Shack-0}
+
+Examine the shelving. Get the gloves to find a hefty, rust-streaked iron key.
+
+Keep the key but put the gloves back on the shelf.
+They are too manky to carry around with you.
+
+\hyperref[sec:route-3]{\emph{Return to route}}
+
+\newpage
+\subsection{Under the Bridge}\label{sec:sol-Under-the-Bridge}
+
+Use the iron key from the Shambolic Shack to open the hatch.
+
+Before going down, put everything you're carrying (except the flashlight)
+in the backpack and close it.
+
+\hyperref[sec:route-4]{\emph{Return to route}}
+
+\newpage
+\subsection{Tunnel Entrance}\label{sec:sol-Tunnel-Entrance}
+
+Examine the masonry and the walls. Examine the opening. Get the flask.
+
+Examine the rags.
+
+Open the flask and give it to the hobo so he drops something,
+then examine the remaining features of the tunnel
+while you wait for him to fall asleep again.
+
+Look for what the hobo dropped and grab it. Use it to open the hatch.
+
+Opening the hatch reveals a fusebox, two candles and a mallet.
+
+Examine the fusebox. Switch on the switch.
+(It is probably a bug that the switch is described as off even when it is on.)
+
+If you weren't carrying the flashlight,
+you can now go back to the Subterranean Tunnel and retrieve the things you dropped.
+
+Once you're back,
+compare the fusebox with the sockets in the opening, and note the position of the fuses.
+That will tell you what to do with the candles.
+
+Examine the picture (possibly for the second time): this time you will see a clue.
+Use the mallet to hit some of the bricks. It helps to know about musical scales,
+but you'll be able to work it out regardless.
+
+\hyperref[sec:route-4]{\emph{Return to route}}
+
+\newpage
+\subsection{Small Chamber}\label{sec:sol-Small-Chamber}
+
+Examine all the crates. Examine the padlock.
+
+Look in the large crate, repeatedly, to find a phonograph, a loudspeaker horn
+and a record. Assemble the phonograph, wind it up and play the record.
+
+Open the medium crate. Examine the newspaper, then read it until you are able to
+calculate the date of Ceecee's death. (You may find a dedicated \href{https://www.timeanddate.com/date/dateadd.html}{date calculator} helpful for this.)
+You then need to translate this into a four digit number (M-D-YY).
+
+Make sure you do not have the suitcase or any other combination lock visible
+(zip it away in the backpack if you have it with you)
+and feed the number into the padlock one digit at a time:
+\textsc{set knob to}, \textsc{turn knob to}, \textsc{dial knob to} or simply
+\textsc{dial} should all work.
+
+Open the small crate to reveal a paperback library book.
+
+\hyperref[sec:route-4]{\emph{Return to route}}
+
+\newpage
+\subsection{Tiny Windowless Office}\label{sec:sol-Tiny-Windowless-Office}
+
+Examine the papers to get the large brass key.
+
+Read the note and open the parcel.
+
+Examine the box, the panel and the buttons.
+
+Press the buttons corresponding to the lid illustrations in the right order
+-- if you get stuck, see the hint at the bottom of the page --
+then the large button, to get Luther's tiny leather journal.
+
+Examine the journal and the embossed design, then read the contents.
+That's another Alderman for your list.
+
+\hyperref[sec:route-4]{\emph{Return to route}}
+
+\vfill
+
+The buttons represent the numbers 0--4.
+The animals all have different numbers of something.
+
+\newpage
+\subsection{Mudroom}\label{sec:sol-Mudroom}
+
+Get the teapot. Read the inscription. The date refers to a real historical incident involving
+that ship, which nicely ties in with what you will learn in the room where you use it.
+
+Unlock the front door with the large brass key.
+
+Everything else is decoration: have fun playing with it.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+% \newpage
+% \subsection{Foyer}\label{sec:sol-Foyer}
+\newpage
+\subsection{Landing at the Bottom of Stairs}\label{sec:sol-Landing-at-the-Bottom-of-Stairs}
+
+Stand on the bookshelf to look out the window then get down.
+
+Look in the newly uncovered alcove to get another library book.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Top of Stairs}\label{sec:sol-Top-of-Stairs}
+
+There is a pink-bound library book in the cupboard under the sink.
+
+When you read the book, stay high, and find and eat the hunter.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Nursery -- Hillside Path -- Carol's Room}\label{sec:sol-Nursery--Hillside-Path--Carol's-Room}
+
+These rooms can be a bit judgemental about how you solve them, so if you care
+about such things you might want to save so you can replay them with the advantage
+of hindsight.
+
+Ask Carol about as much as possible before being evicted.
+
+Return to Hillside Path.
+Talk some more to Christabell.
+Receive her mark and learn a magic spell for destroying the rune book
+and another for transportation.
+
+Return to Carol's room.
+Drat, the rune book isn't here. You have to accept Carol's mark before you can leave again.
+
+Return to Hillside Path.
+Talk some more to Christabell to learn your next task.
+
+Return to Carol's room.
+When you've nosed around enough, but keeping some questions in reserve,
+destroy the binder with your spell.
+
+If there is one flaw with this scene, it's that you never know if Carol is
+distracted or not. Apparently (and counter-intuitively) she is distracted
+when answering one of your questions. Therefore, ask Carol about something
+then immediately open the window (twice).
+
+If you want to avoid some heartbreak, jump out the window. If you want more drama,
+hang around.
+
+After the showdown, you will see your own rune book.
+Interact with it to receive a worn out, decaying photograph with a riddle on it.
+There is a copy of the riddle in \cref{sec:nb-picture-riddle}.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Hallway South}\label{sec:sol-Hallway-South}
+
+Peel the wallpaper and go through the hole to read some source code for the room.
+
+This will tell you where to find the typescript.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Library}\label{sec:sol-Library}
+
+Examine and take the picture to reveal a safe.
+
+Look through the paperbacks. One book is noticeably the odd one out.
+
+Read it to find a key to open the desk.
+
+This will tell you how to find the safe combination using the other obvious feature in the room.
+
+Inside the safe is another (public) library book.
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{Gallery}\label{sec:sol-Gallery}
+
+There are a few ways of clearing the mirror away from the north door.
+
+These are the ones I found:
+
+\begin{itemize}
+\item Just keep pushing or pulling the mirror.
+\item Smash the mirror.
+\item Follow the hint from the fortune cookie and slash open the picture of the child (if you examined the mirror enough, the game will automatically give you a shard of glass to do this with).
+\end{itemize}
+
+You may be able to find a better solution.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Music Room}\label{sec:sol-Music-Room}
+
+For a map of the locations you can visit, see \cref{sec:nb-Music-Room}.
+
+In the Girl's Bedroom (was this also Carol's room?),
+observe the ritual until you are evicted.
+
+In the Living Room, examine and get the phone to listen to the message.
+
+In the Playground, examine the seesaw and all its components.
+You should find chalk and a note. Read the note, and examine the thing it mentions.
+Listen to the message you are given.
+It is important, so you can revisit the Playground to hear it again, or read the note.
+
+In the Living Room, it is now night, and there is something you can \enquote{pick up}.
+You have everything you need to \enquote{get ears}
+(remember you are reliving Francine's experiences).
+Wear them.
+
+At the Club Backstage, examine the literature on display.
+Notice the names of the bands on the gig poster.
+Examine the name that is most familiar, apart from Francine.
+
+In the Girl's Bedroom, give the chalk to Francine (you die otherwise).
+Leave the closet, open the window to air the room, and receive the plane\slash picture.
+Examine it thoroughly. Retrieve the chalk again.
+
+In L'oreille, examine and look in the kaleidoscope.
+Examine the wall and keep listening to discover Francine's colour/rank.
+
+In the Basement, read the literature on offer.
+Examine the freezer, open it, get the object inside (twice).
+You should be able to find another ring.
+
+In the Forestland, draw a chalk circle and put both rings on the corpse's fingers.
+
+Back in the Music Room, you'll be given another paper plane.
+Read it to learn Francine's familiar.
+
+You can safely drop anything you picked up from this area.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Cragne Family Plot}\label{sec:sol-Cragne-Family-Plot-1}
+
+The white key from the Court opens the crypt.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Crypt}\label{sec:sol-Crypt}
+
+Read the coffin to discover another Alderman colour/rank.
+
+Open it to discover his familiar and a long wooden key.
+
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{Town Square}\label{sec:sol-Town-Square}
+
+Assuming the clue you read on the worn out, decaying photograph matches what
+is in \cref{sec:nb-picture-riddle}, rotate the rings of the emblem like so:
+
+\begin{adjustbox}{center}
+\begin{tikzpicture}[baseline=0pt]
+\draw[Gray] (0,0) circle[radius=1];
+\draw[Gray] (0,0) circle[radius=2];
+\draw[Gray] (0,0) circle[radius=3];
+\draw[Gray] (0,0) circle[radius=4];
+
+\foreach \x/\xtext in
+{90/n, 0/e, 270/s, 180/w}
+\node[align=center,font=\sffamily\scshape] at (\x:4.2) {\xtext};
+
+\foreach \y/\xtext [evaluate=\y as \x using \y-120] in
+{90/{Black-\\bird}, 30/Tree, 330/Sparrow, 270/Cube, 210/Woman, 150/Feather}
+\node[align=center] at (\x:3.5) {\xtext};
+
+\foreach \y/\xtext [evaluate=\y as \x using \y-60] in
+{90/Daan, 30/Shi, 330/Aak'ee, 270/Hai, 210/Tlèè, 150/Ji}
+\node[align=center] at (\x:2.5) {\xtext};
+
+\foreach \y/\xtext [evaluate=\y as \x using \y+120] in
+{90/Pig, 30/Eye, 330/{Wood-\\pecker}, 270/Cross, 210/Fish, 150/Eagle}
+\node[align=center] at (\x:1.5) {\xtext};
+
+\node[rotate=-60] at (30:1) {Δ};
+
+\node[align=center] at (0:0) {Bird\\claws};
+\end{tikzpicture}
+\end{adjustbox}
+
+Say \textsc{ahe'hee}.
+
+Get the amulet from the hole and examine it.
+The clue is more important than the object.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Drinking Fountain}\label{sec:sol-Drinking-Fountain}
+
+There should be a ghost here by now, the one that has been haunting you since
+you first encountered a library book.
+
+Pull the ivy to reveal a second fountain. Read the sign. Shudder.
+
+Demolish the smaller fountain to receive the reading glasses.
+There's no mystery to these: if you wear them,
+they will tell you if there is an unread library book where you are.
+
+Examine the hole you have revealed to find another library book.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Exterior}\label{sec:sol-Church-Exterior}
+
+Unlock the door with the long wooden key from the Crypt.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Lobby-Space (Narthex)}\label{sec:sol-Church-Lobby-Space}
+
+This area gives you strong hints, and in places runs on rails. Go with the flow.
+
+If you examine the photos and the students in them, you'll see a girl with lipstick.
+You'll also find an interesting article.
+The room name changes to Narthex once you discover the proper name for it.
+
+Go into the restroom. Examine the mirror, and wear the lipstick to experience
+part one of the flashback. Examine the mirror again to confirm.
+
+Give the lipstick to the nun to end the flashback. Examine the mirror again.
+
+Wear the red shoes to experience part two. (Examine the mirror again to confirm.)
+Look under the ladder to find the hiding place, and hide the book to end the vision.
+(Examine the mirror again to confirm.)
+
+Retrieve the library book and read it.
+Look around to see that a noose has appeared.
+Go up for one more vision.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Chapel}\label{sec:sol-Chapel}
+
+You can optionally score points for various actions here, e.g. finding the pencil,
+putting the teeth in the bottle.
+
+Examine the plate and the lockbox. Try to take the tablecloth.
+Recall the item you picked up in the Circular Room.
+
+When you have worked out how to open the lockbox, get the crooked dagger.
+
+Unlock the south door with the long wooden key.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Church Basement}\label{sec:sol-Church-Basement}
+
+Examine the TV and tapes for a basic idea of what you need to do,
+but try to turn on the TV and you'll find it's unplugged;
+the socket is hidden somewhere.
+
+Examine the mannequin, its eye and neck. Push the neck to cut yourself on it.
+You should now be able to get the TV working.
+
+Use the clue from the amulet to find a message (remember to set the counter correctly);
+there's a copy of it in \cref{sec:nb-Church-Basement}.
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{Dining Room}\label{sec:sol-Dining-Room}
+
+Examine the calendar while you wait for the cut scene to end.
+
+Turn on the machine and keep turning the dial to view how the site looked in the past.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Kitchen}\label{sec:sol-Kitchen}
+
+Open the door in the floor with the small rusty iron key from the Study.
+
+The books here are quite interesting but you don't need them.
+Having said that, there is another room where, if you are being cautious,
+you might feel more relaxed using these ones than those from the library.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Basement}\label{sec:sol-Basement}
+
+Get the jar of keys and the screw jar. Open them.
+(You don't strictly speaking need the screw jar,
+but it's nice for keeping the slimier items in.)
+
+Look under the carpet and pull it aside to reveal a hatch.
+
+Go down to enter the Cragne Library Forbidden Annex.
+(Do not go north from here.)
+
+Examine everything (especially the bat) and try to open the cabinet.
+Now, you could give away all your books, or\xelip
+
+Use the sinister iron key to unlock the cage.
+The ghost will chase the bat giving you free reign with the books.
+Don't be afraid to ring the bell to call Baines back for questioning,
+he only stays for two turns.
+For completeness, ask him about the author of every book you read.
+
+Get, examine and read three books to reveal a name scrawled in pencil.
+Ring the bell and ask the ghost about it (use a straight apostrophe, not a curly one).
+
+Read a few more books.
+I recommend \emph{Mysteries of the Red City} followed by \emph{The Searcher in Darkness}
+followed by \emph{Mysteries of the Red City} again.
+You should stumble across a ritual you can perform, but lacking the magic word.
+
+Keep reading until you stumble across the magic word. (If you miss any of these
+details, there are copies in \cref{sec:nb-Cragne-Library-Forbidden-Annex}.)
+
+Ring the bell, and chant the word three times.
+Run away from the resulting monster by going up, then to another room.
+It is then safe to return.
+
+You will be rewarded with a library book and a vial.
+Open the vial to experience a memory regarding Hiram, Silas and Irenius.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Cold Storage}\label{sec:sol-Cold-Storage}
+
+While holding the thing you will be projected back into your younger self.
+
+Examine and empty the satchel to get a robe, a bib and some clippings.
+
+Read the clippings.
+
+Touch the eyeball: yes, it's a squid cannon.
+
+Use the robe to stop the squid escaping through the wall.
+
+Use the bib to stop the squid escaping through the floor.
+
+Use the satchel to stop the cat escaping through the catflap.
+
+Put the clippings on the satchel to confuse the cat further.
+
+After that, you will be returned to your body,
+and able to read the glyphs for another Alderman.
+
+(Is this the same eye that the eyepiece interfered with?)
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Pantry}\label{sec:sol-Pantry}
+
+Examine the shelves and follow the hints to get the peaches. (More peaches!)
+Open the peaches.
+
+Take the stem of the rotten pumpkin and put it in the peaches.
+You will then be able to reconstitute previous meals.
+You need never go hungry again.
+
+Put self in peaches to meet a little spark.
+Ask it about Edmund to learn a helpful poem about bells
+(reproduced in \cref{sec:nb-Pantry}).
+Go up to exit.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Workroom}\label{sec:sol-Workroom}
+
+Brace yourself, this is another long one.
+
+Examine the mirror to find a delivery note.
+Look up the two names for your first magic words.
+Use them to find a third name, thence a new word and a mission to work towards.
+
+Use the words you've learned so far and examine the mirror for a chain of clues to follow.
+Use words of Invocation and Enlightenment and listen to get another chain of clues.
+After following both branches you'll be equipped to squeeze another clue from the mirror.
+
+Use Trance, Invocation and Enlightenment,
+and listen for a clue that will set you a more immediate task: to find three glyphs.
+
+Use a season, Enlightenment and Trance to get a clue that will reveal how to get two glyphs.
+Use Winter, Trance and melt the glacier to get the third.
+
+This will give you new word. Use it to reveal a way to turn the moon red.
+Then use it with Trance to find a fourth dream location.
+
+Freeze the lake to walk to the island and then evaporate it to find the Temple.
+There is a clue there that will tell you where to find the Name:
+Use Summer, Trance and break open the tomb with the appropriate word.
+
+Return to the Temple and use the name.
+This starts a new ritual, so you can use Trance again.
+
+When you reach the gate, check your inventory for a way to open it.
+
+You will find the library book you need, but you can't take it with you.
+
+Hide it where you'll be able to find it again,
+then cancel both the inner and outer rituals.
+
+Retrieve the item from its hiding place.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Wine Cellar}\label{sec:sol-Wine-Cellar}
+
+Examine the bottles. Drink the odd one out to discover\xelip something.
+Smash the bottle to get it.
+
+Empty the cask (twice) to make it light enough to shift out of the way of the door.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Laboratory}\label{sec:sol-Laboratory}
+
+Save and have fun losing the game.
+
+Then \textsc{restore}\slash \textsc{take back} and make sure you have the
+crooked dagger (from the Chapel) to hand.
+I won't tell you what to do with it,
+but I'm sure you could take a stab at the answer.
+
+Get the mirror. Examine it and note what it does.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Boiler Room}\label{sec:sol-Boiler-Room}
+
+Examine everything. Read the note on the table.
+Open the drawer and take what's inside.
+Examine and read the journal.
+
+If you want to practice with the equipment, consult the journal about
+\textsc{precautions} and \textsc{catch-all}.
+Stand on the table and examine the shelf to find more of what you need.
+Be sure to take the precautions.
+
+There are lots of places to visit.
+The descriptions are great but there's not much to do.
+
+When you have had enough, consult the journal about \textsc{men of power}.
+This will start a trail of clues in the journal to the hex code you really need.
+If you guess the right code, use it to get the library book.
+If you can't get it, there is a more explicit clue, crossword style,
+at the bottom of the page.
+
+I did not find a use for the Golden Apple.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\vfill
+Not alive (4)\quad Cow meat (4)
+
+\newpage
+\subsection{Courtyard}\label{sec:sol-Courtyard}
+
+Use the handle from the well to crank the knight's head.
+
+Give it an extra twist, then push the crack.
+You can now go north.
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Hallway South}\label{sec:sol-Hallway-South-1}
+
+Unlock the door with the red triangle key from the Wine Cellar.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Balcony}\label{sec:sol-Balcony}
+
+Examine the statue to find a sturdy key.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Upstairs Hall, North End}\label{sec:sol-Upstairs-Hall-N}
+
+Once it is open, look in the armoire to find a notebook.
+Read it repeatedly for clues about an Alderman.
+
+After experiencing a vision concerning the north east doorway,
+you will receive a JogMaster that you can listen to.
+(Keep wearing it to avoid repeating the vision.)
+
+Unlock the east door with the sturdy key from the Balcony.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Master Bedroom}\label{sec:sol-Master-Bedroom}
+
+Examine the bed or lamp. Uh oh.
+
+Look around to shed some light on how to reverse what happened.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\newpage
+\subsection{Shadowy Closet}\label{sec:sol-Shadowy-Closet}
+
+It just takes a little reflection to work out what to do here, but if not the
+answer is at the bottom of the page.
+
+\hyperref[sec:route-9]{\emph{Return to route}}
+
+\vfill
+Put the mirror from the Laboratory in the frame
+to reveal a trap door in the ceiling.
+
+\newpage
+\subsection{Disheveled Studio}\label{sec:sol-Disheveled-Studio}
+
+Examine the canvas and table,
+then examine the bookshelf to find and read the book for clues on what to do.
+
+Draw (on) the canvas.
+Read the book again until you get a papercut, then bleed on the canvas, then kiss it.
+
+Prepare yourself by putting frankincense, cedarwood, and Saviour's Breath (clear oil) on the canvas.
+
+Lastly, put peat venom (teal oil) on the canvas and kiss the canvas.
+
+After the horror show, you will get the slimy key.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Invasive Library}\label{sec:sol-Invasive-Library}
+
+Listen to find the odd book out.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Science Tower}\label{sec:sol-Science-Tower}
+
+Open the cabinet, and get the peanut bag and the pen. Examine both.
+
+Put the ashtray stand on the table,
+then get on the table and lift it by pressing the respective button with the pointer.
+
+Get the egg, and pull the latch to release the skylight.
+When the table goes back down, get off and get the stand (to return it to the floor).
+
+You can now put the hamster on the table, open the skylight and lift the table.
+Take note of the interval between the thunder and lightning so you can activate the antenna at the right time.
+
+Put the hamster back in the cage. When it completes its work, give it the peanut from the bag.
+
+At some point the egg will hatch. Keep what's inside.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Branching Corridor}\label{sec:sol-Branching-Corridor}
+
+Push (or pull) the cacti in the right order to clear a path.
+
+If it gets too hot, move to a different room then come back in.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\subsection{Shambolic Shack}\label{sec:sol-Shambolic-Shack}
+
+As mentioned in \cref{sec:req-Shambolic-Shack}, save before doing anything else.
+
+Search the soil. The game won't let you do it with bare hands, so put on the gloves.
+
+Time is now of the essence. Search the soil and locate the fungicide.
+Having done so, immediately drop the gloves and spray your hands.
+\emph{Do not spray the gloves.}
+
+(If you carry the gloves around, they will cover the rest of your stuff with
+mildew. Sadly, there isn't fungicide to spare to reverse this, so that's why
+you mustn't carry the gloves.)
+
+Search the soil again. The thing that lives there wants a snack. Are you carrying food,
+however nasty?
+
+Put the dessicated sausage in the soil. Hmm, almost right.
+
+Put the sausage in the gloves then try again.
+
+Wait for the thing to expire, then search the soil again for a tiny brass key.
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{Rec Room}\label{sec:sol-Rec-Room}
+
+There is one cabinet of interest. Examine it, then unlock it with the tiny brass key.
+
+Watch the blank TV for a while until you see an advert for a board game.
+
+Follow the trail of board games until you get the rusty meat cleaver.
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{The Meatpacking Plant}\label{sec:sol-The-Meatpacking-Plant}
+
+Examine the hooks, then what you find on the hooks.
+
+While carrying the rusty meat cleaver, cut the animal.
+
+This gives you the current secret menu for the Invisible Worm.
+(Remember Bethany at the Estate Agent's had an out-of-date version?)
+
+\hyperref[sec:route-11]{\emph{Return to route}}
+
+\newpage
+\subsection{Curiosity Shop}\label{sec:sol-Curiosity-Shop}
+
+Find an item you like the look of. Offer to buy it.
+You won't be able to; in fact you will be asked to donate something.
+
+Give the lady a red herring, and get the ancient key in return.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Amorphous Tunnel}\label{sec:sol-Amorphous-Tunnel}
+
+Unlock the east door with the nasty key from the Steeple. Retain the key.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Narrow Straits}\label{sec:sol-Narrow-Straits}
+
+Open the sarcophagus with the ancient key from the Curiosity Shop, and retrieve the cyst.
+
+Unlock the west door with the nasty key from the Steeple.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{Backwater Public Library}\label{sec:sol-Backwater-Public-Library}
+
+Pick up Peter's library card again.
+
+Return all the library books to the librarian to clear Peter's account.
+
+Point to the grimoire to borrow it.
+Read it for a ritual to follow, and keep it with you.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+\newpage
+\subsection{The Invisible Worm}\label{sec:sol-The-Invisible-Worm}
+
+Examine the walls, and you will see there's something not tied down.
+Obviously you are meant to steal it, but not with the barman watching.
+
+Order things off the secret menu.
+Two of them are complicated enough to distract the barman.
+(When I played, one was mentioned by Bethany way back in the Estate Agent's,
+the other by the old timers,
+but there's no harm in trying them all: you must be ravenous by now.)
+
+Escape once you've stolen the item.
+
+\hyperref[sec:route-12]{\emph{Return to route}}
+
+% \vfill
+% Fiddleheads Three Ways, Ancestor Sandwich.
+
+\newpage
+\subsection{Greenhouse}\label{sec:sol-Greenhouse}
+
+Here is one solution. You may find others.
+
+Examine the statue.
+
+Keep going up. On the way, look out for a machete to pick up.
+
+There are things you can cut with it, but you'll find it's blunt,
+so sharpen it with the whetstone.
+
+On reaching the top, you'll find a spirit parrot pushes you back down.
+Hmm, the statue is of a parrot\xelip
+
+Appease the spirit by cutting the vines from the statue.
+When you get to the top again, cut away branches to reveal a cage.
+But if you try to get what's inside, the parrots will get you.
+
+Undo, and return to the statue and clean it off with some tool or other
+(the whetstone works).
+
+Repeat the exercise and you'll end up with a cardboard box.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Court}\label{sec:sol-Court}
+
+Put the right familiars on the right pedestals to unlock the monolith.
+
+\begin{xltabular}[c]{\linewidth}{llll}
+\hline
+\textbf{Alderman} &
+\textbf{Familiar} &
+\textbf{Name} &
+\textbf{Room} \\
+\hline
+Cesious & Silverfish & Phyllis & Milkweed \\
+Eburnean & Kraken & Eliakim & Dim Recesses \\
+Croceate & Eel &  & Under Bridge\\
+Fulvous & Duck &  & Outside Pub \\
+Puce & Greyhound & Jonathan & Padded Cell \\
+Rufous & Rat & Charles & Dusty Office \\
+Mazarine & Pontiac Firebird & Konstantine & Bathroom of MP \\
+Niveous & Wolverine & Luther & Church Office \\
+Xanthic & Peregrine falcon & Francine & Music Room \\
+Icterine & Weasel & Harvawell & Crypt \\
+Griseous & Cat & Mavis & Cold Storage \\
+Fuscous & White antelope & Theo & Upstairs Hall N \\
+\hline
+\end{xltabular}
+
+Look in the obelisk. Get the horn.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Abandoned Nursery}\label{sec:sol-Abandoned-Nursery}
+
+Examine the dollhouse and its interior, you will see it is clogged up with cobwebs.
+
+The vacuum cleaner is missing a component.
+Repair it with the component in the cardboard box from the Greenhouse.
+
+Using the vacuum cleaner, clean the dollhouse.
+Search the interior to find a silver letter opener.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Sitting Room}\label{sec:sol-Sitting-Room}
+
+Examine the mirror to swap identities. The next bit is more or less on rails:
+ring the bell, open your letter, give Eustace his letter and letter opener,
+and when he attacks you, get the letter opener back.
+
+When you've finished looking around the room and out the window,
+look in the mirror again to swap back and receive the chime.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Steeple}\label{sec:sol-Steeple}
+
+Examine the mass.
+
+Read the journal and tome, then get and wear the pendant.
+
+Ring the bells in the order specified in the poem from the Pantry
+(see \cref{sec:nb-Pantry}).
+
+Observe the pattern of stars and compare it with the pattern shown in the
+celestial tome. It should have changed to match.
+Make a note of the new description of the astrological sign.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Train Station Lobby}\label{sec:sol-Train-Station-Lobby}
+
+Unlock the east door with the slimy key from the Disheveled Studio.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Station Security Room}\label{sec:sol-Station-Security-Room}
+
+Examine the article and calculate the date of the incident.
+
+Examine the monitors, then each one in turn.
+
+Examine the tapes. Examine the right date to play the corresponding tape.
+
+This will tell you where to find what Bran stashed.
+Read the accompanying note so you know where to use the tarnished brass key.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Inside the Shack}\label{sec:sol-Inside-the-Shack}
+
+Ring the chime to trigger another set piece on rails. Don't panic!
+
+When you reach the Book of All Your Days, you get to rewrite your relationship with Peter.
+
+\begin{itemize}
+\item
+  Turn the page to choose between your first meeting, wedding, and end of relationship.
+\item
+  North changes your ages when this happened.
+\item
+  South changes the location\slash environment.
+\item
+  East swaps over whether you or Peter are making the moves.
+\item
+  West alters the Lovecraftian horror level.
+\end{itemize}
+
+Pull the bookmark to exit and get a photographic record of your choices.
+
+\hyperref[sec:route-13]{\emph{Return to route}}
+
+\newpage
+\subsection{Observatory}\label{sec:sol-Observatory}
+
+Use the device to set the right star sign:
+
+\begin{itemize}
+\item \textsc{push toggle} to get a random configuration;
+\item \textsc{turn crank} to set the first constellation;
+\item \textsc{turn dial} to set the second constellation;
+\item \textsc{pull lever} to set the relative position (above, under, opposing, in the house of);
+\item \textsc{pull pulley} to rotate the projector (ascending, descending).
+\end{itemize}
+
+Follow the instructions from the grimoire.
+Use the photograph from Inside the Shack as Peter's most treasured memento.
+
+Go through the portal. The solution to the next area is on the
+\hyperref[sec:sol-Gulf-of-Nehilim]{next page}.
+
+\newpage
+\subsection{Gulf of Nehilim}\label{sec:sol-Gulf-of-Nehilim}
+
+Go in.
+
+\vfill
+\subsection{The Great Purple Unknown}
+
+If you lost the game by saying a particular word from \emph{Anchorhead} earlier,
+you will now understand where the text for that ending came from.
+
+Examine the gate and the masks.
+
+Examine the masks one by one and do what they suggest.
+This seems to heal Peter. You can hug and kiss him now.
+
+Search gate to find dials. Examine the dials, then the left dial and the right dial separately.
+This is slightly cruel: even though both are already set to 0,
+you have to set them both to 0 yourself to unlock the gate.
+
+Go through to win!
+
+\newpage
+\section{Notes and clues}\label{sec:nb}
+
+\subsection{The Pull-String Doll}\label{sec:nb-doll}
+
+I'm not sure it was intended as such,
+but the pull-string doll is effectively an in-game hint device (like the coffee).
+If you are stuck for something to do,
+you can pull the string and the doll will usually identify something in the
+environment you can examine or interact with further.
+
+The thing it identifies is random,
+so don't worry about it spoiling the solution for you.
+
+It does not matter what mode you operate the doll in:
+it is a matter of personal preference whether you want short or long messages.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Variegated Court}\label{sec:nb-Variegated-Court}
+
+Milkweed contains the first of many clues you will learn about the
+Variegated Court. There is a puzzle late in the game that relies on you
+remembering what you have learned.
+
+Fortunately, you don't need to memorize every detail of each member's lives.
+You only need to know two things: the adjective that describes each Alderman
+of the Variegated Court (these are all obscure colours but they possibly also
+signify rank), and what form their familiar takes.
+
+There are quite a few, so if you are trying not to rely on this walkthrough too
+much, do take notes. Otherwise, I provide a complete list in the puzzle
+solution.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{Library Books}\label{sec:nb-library-books}
+
+Throughout your travels you will come across many books. The ones you really
+need to care about are the library books. Indeed, if you find a way of doing so,
+you might find it convenient to keep them separate from the other ones in your
+inventory, or just not carry any other books about.
+
+I know you will anyway, but it is important that you read these books.
+It is especially important to that presence that started haunting you when you
+first saw a library book: so important that it will freeze the library insignia
+on every book you read so you can keep track of which ones they are.
+
+The significance of the presence will be become clear later, but it is nothing
+to worry about.
+
+\hyperref[sec:route]{\emph{Return to route}}
+
+\newpage
+\subsection{The Backpack}\label{sec:nb-backpack}
+
+You don't have a particular carrying limit in this game,
+which is nice because you don't have to juggle your inventory.
+On the other hand, it does mean you can end up with a lot of stuff,
+which can be a problem for a couple of reasons:
+
+\begin{itemize}
+\item
+  In cases of ambiguity, the things you carry take precedence over the things
+  in the room. You may find commands that ought to work are failing because
+  the game is doing them to the wrong thing, sometimes without making this
+  clear to you.
+\item
+  You may find it hard to remember, say, which books are library books and
+  which contain clues, or which items you have used and which you have not.
+\end{itemize}
+
+Your Jansport backpack is a solution to both these problems.
+
+When the backpack is closed, the items inside are hidden from the parser
+so they don't interfere with your commands. I recommend keeping it closed
+when you are not explicitly managing your inventory.
+
+Also, the backpack compartments allow you to keep your items sorted.
+Each pocket can be open or closed independently,
+with the same effect of revealing or hiding the items inside from the parser.
+
+Use these however you like, but here's one suggestion:
+
+\begin{itemize}
+\item
+  Use the book pocket for library books (not other books).
+\item
+  Use the key pocket for unused keys.
+\item
+  Use the side pocket for (other) items containing clues
+  you'll need to refer to again.
+\item
+  Use the trash pocket for items you have used but don't want to drop.
+  (You can drop most if not all items once you have used them,
+  with the exception of two particular keys.)
+\item
+  Use the main compartment for any other unused items.
+\end{itemize}
+
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{The Cyphered Message}\label{sec:nb-cyphered-message}
+
+In the lion sex book, you find a note with this cyphered message:
+
+\begin{quote}
+\begin{verbatim}
+BJIYO --
+.....
+
+SIX TIF J MOXXMD NIYDXLOBS WHIY XLD CFHOI NLIG.
+... ... . ...... ......... .... ... ..... ....
+
+CLDCE XLD LOKKDB GICEDX IW TIFH AJCEGJCE.
+..... ... ...... ...... .. .... ........
+
+BIU SI SDX TIFH YJB, SOHM!
+... .. ... .... ...  ....
+
+O SIX YOBD JBK UD’HD KIOBS SHDJX.
+. ... .... ... .. .. ..... .....
+
+(LD NJTN LO & SIIK MFCE.)
+ .. .... ..    .... ....
+
+MIQD, JFBXOD NXDMMJ.
+....  ...... ......
+\end{verbatim}
+\end{quote}
+
+I managed to decypher the message by guessing the letters in this order:
+
+\begin{quote}
+\begin{verbatim}
+O  J  D  H  U  I  B  Y  W  S  X  K  L  N
+.  .  .  .  .  .  .  .  .  .  .  .  .  .
+
+M  F  T  Q  C  G  E  A
+.  .  .  .  .  .  .  .
+\end{verbatim}
+\end{quote}
+
+The solution is on the \hyperref[sec:nb-cyphered-message-sol]{next page}.
+
+Once you have acted on the contents of the message, there is a note about it in
+\cref{sec:nb-trolley-system}.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage\phantomsection\label{sec:nb-cyphered-message-sol}
+Decyphered, the message reads as follows:
+
+\begin{quote}
+Naomi --
+
+Got you a little something from the curio shop. Check the hidden pocket of your backpack. Now go get your man, girl! I got mine and we’re doing great. (He says hi \& good luck.)
+
+Love,\\
+Auntie Stella.
+\end{quote}
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{The Trolley System}\label{sec:nb-trolley-system}
+
+The trolley system is a very useful device.
+I recommend you wear your pass at all times.
+
+Note that you can type just ‘\textsc{wait for} \emph{colour}’:
+the ‘\textsc{line}’ bit is optional.
+
+Locations get added to your schedule as you visit them,
+and (as you would expect) you can't use the trolley to get to unvisited locations.
+Here is the full list of locations for ease of reference:
+
+\begin{quote}
+\begin{description}
+\item[Railway Platform] Brown
+\item[Church Exterior] Gold
+\item[The Old Well] Green
+\item[Outside the Library] Blue
+\item[River Walk] Aqua
+\item[Constabulary Road] Orange
+\item[Outside the Plant] Red
+\item[Front Walk] Purple
+\item[Malign Tunnel] Black
+\item[Balcony] Lavender
+\item[Attic] Eggplant
+\end{description}
+\end{quote}
+
+In the route maps in \cref{sec:route}, rooms with trolley stops have thick borders.
+The asterisked sets of directions can be replaced or shortened with a trolley journey.
+
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{The Town Square Emblem}\label{sec:nb-town-square-emblem}
+
+The following might help you imagine what the emblem looks like.
+(This is the initial state, not the solution.)
+
+\begin{adjustbox}{center}
+\begin{tikzpicture}[baseline=0pt]
+\draw[Gray] (0,0) circle[radius=1];
+\draw[Gray] (0,0) circle[radius=2];
+\draw[Gray] (0,0) circle[radius=3];
+\draw[Gray] (0,0) circle[radius=4];
+
+\foreach \x/\xtext in
+{90/n, 0/e, 270/s, 180/w}
+\node[align=center,font=\sffamily\scshape] at (\x:4.2) {\xtext};
+
+\foreach \x/\xtext in
+{90/{Black-\\bird}, 30/Tree, 330/Sparrow, 270/Cube, 210/Woman, 150/Feather}
+\node[align=center] at (\x:3.5) {\xtext};
+
+\foreach \x/\xtext in
+{90/Daan, 30/Shi, 330/Aak'ee, 270/Hai, 210/Tlèè, 150/Ji}
+\node[align=center] at (\x:2.5) {\xtext};
+
+\foreach \x/\xtext in
+{90/Pig, 30/Eye, 330/{Wood-\\pecker}, 270/Cross, 210/Fish, 150/Eagle}
+\node[align=center] at (\x:1.5) {\xtext};
+
+\node[rotate=-60] at (30:1) {Δ};
+
+\node[align=center] at (0:0) {Bird\\claws};
+\end{tikzpicture}
+\end{adjustbox}
+
+\bigskip
+\hyperref[sec:route-1]{\emph{Return to route}}
+
+\newpage
+\subsection{The Riddle from the Worn-Out Picture}\label{sec:nb-picture-riddle}
+
+Here is the riddle on the a worn out, decaying picture:
+
+\begin{quote}
+Point the mark towards the cross,\\
+Find the eagle a perch,\\
+Put its gift over \emph{daan},\\
+And you'll soon end your search.\par
+Don't forget to say ‘ahe'hee’!
+\end{quote}
+
+\hyperref[sec:route-5]{\emph{Return to route}}
+
+\newpage
+\subsection{The Music Room}\label{sec:nb-Music-Room}
+
+For your convenience, here is a map of the various locations to which the
+podium can take you.
+
+\medskip
+\bgroup\tikzset
+{ plus/.style  = {maze={act={$+$}}{act={$+$}}}
+, minus/.style = {maze={act={$-$}}{act={$-$}}}
+, lfo/.style   = {maze={act={L}}{act={L}}}
+, tgmnode/.append style={draw=Green}
+}
+\begin{adjustbox}{valign=t,center}
+\sffamily
+\begin{gamemap}
+\graph
+[ no placement
+] {
+  % 0
+  mr/"Music\\Room",
+  % 1
+  o/"L'oreille" [at=(90:1)],
+  gb/"Girl's\\Bedroom" [at=(210:1)],
+  lr/"Living\\Room" [at=(330:1)],
+  % 2
+  pg/"Play-\\ground" [at=(30:1.3)],
+  b/"Basement" [at=(150:1.3)],
+  cb/"Club\\Backstage" [at=(270:1.3)],
+  %3
+  fl/"Forest-\\land" [at=(270:2.4)],
+  % connections
+  mr -- [lfo]
+  o -- [minus]
+  b -- [lfo]
+  gb -- [plus]
+  cb -- [minus]
+  lr -- [lfo]
+  pg -- [plus]
+  o,
+  mr -- [plus] lr,
+  mr -- [minus] gb,
+  cb -- [lfo] fl,
+  b -- [warp={$+$}{\tgmSW}{$+$}{\tgmW}]
+  fl -- [warp={$-$}{\tgmE}{$-$}{\tgmSE}]
+  pg
+};
+\end{gamemap}
+\end{adjustbox}
+
+\bigskip
+\hyperref[sec:route-6]{\emph{Return to route}}
+
+\newpage
+\subsection{The Church Basement}\label{sec:nb-Church-Basement}
+
+\begin{quote}
+My dearest Salona:
+
+Apologies, I have still not yet familiarized myself
+with this phonographic contraption. I hope this message finds you well, or, as well can be
+expected given the circumstances. I must be brief, as I am not certain to tarry long in this fearful
+place.
+
+I have instructed my man to send you with this missive your most favorite varietal of
+peaches, newly pickled in a jar with a most singular reagent that, I am told, shall restore to you
+life and vitality. I only pray this does not reach you too late.
+
+Until next we rejoin, I remain, Edmund---
+\end{quote}
+
+\hyperref[sec:route-7]{\emph{Return to route}}
+
+\newpage
+\subsection{The Cragne Library Forbidden Annex}\label{sec:nb-Cragne-Library-Forbidden-Annex}
+
+The critical clues from this room that you only get the once:
+
+\vfill
+\begin{quote}
+Barach’speroth Arguule
+\end{quote}
+
+\vfill
+\begin{quote}
+It must be said three times, in the presence of the carved seal\xelip
+that is the only way to banish the spirit and secure what he has stolen\xelip
+he is covetous, it is the only way\xelip
+but it is so dangerous that I am afraid to do it,
+even to retrieve my precious and defiled memory\xelip
+the god’s first servant will be summoned\xelip
+but I will mark the word, the incantation, before he kills me\xelip
+it is the only way\xelip
+\end{quote}
+
+\vfill
+The remaining critical piece of information, for completeness:
+\begin{quote}
+ANGARITHEP
+\end{quote}
+
+\vfill
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{Pantry}\label{sec:nb-Pantry}
+
+Edmund's poem from the jar of peaches:
+
+\begin{quote}
+Under the crescent moons,\\
+Beneath the starlit skies,\\
+The bells lament with their songs,\\
+The bells lament with their cries.
+
+A song of copper and iron,\\
+A song of silver and gold,\\
+The bells sing of the One's true sign,\\
+The bells sing of the Ones of old.
+\end{quote}
+
+\hyperref[sec:route-8]{\emph{Return to route}}
+
+\newpage
+\subsection{The Walkie-Talkie}\label{sec:nb-walkie-talkie}
+
+The walkie-talkie is another meta device that is intended for you rather than
+Naomi.
+
+It allows you to access an author's commentary for the room you are in.
+It does not work in every room,
+but it's a nice feature for those rooms where it does work.
+
+I leave it as an exercise for the reader to go back through every room and try
+it out.
+
+\hyperref[sec:route-10]{\emph{Return to route}}
+
+\newpage
+\section{Maps of Backwater, Cragne Manor, and game flow}\label{sec:full-map}
+
+The following maps do not show absolutely all locations in the game.
+If an author split their room into several locations, only the main location
+is shown, unless the secondary areas have a sufficiently independent character.
+
+The maps have been shrunk down to fit on the page,
+so zoom in to see the full detail.
+
+\subsection{Backwater}
+
+\tikzset{tgmnode/.append style={draw=Green}}
+\begin{adjustbox}{max width=\linewidth}
+\sffamily
+\begin{gamemap}[set grid={10em}{6em}]
+\graph [no placement] { [x=0]
+  "Railway\\Platform" [entry] -- [going=s]
+  lobby/"Train Station\\Lobby" [y=-1,exit=e] -- [going=w]
+  "Train Station\\Restroom" [x=-1,y=-1],
+  lobby -- [going=e]
+  "Station\\Security\\Room" [x=1,y=-1],
+  lobby -- [going=s]
+  "Exterior of\\Train Station" [y=-2]  -- [going=s]
+  "Milkweed" [y=-3] -- [going=s]
+  ch/"Church\\Exterior" [y=-4,exit=e] -- [going=ne]
+  cy/"The\\Churchyard" [x=1,y=-3,exit=ne] -- [going=in]
+  "Mausoleum" [x=2,y=-3],
+  cy -- [going=ne]
+  dr/"The Dim\\Recesses of\\the Forest" [x=2,y=-2] -- [going=se]
+  "Shack\\Exterior" [x=3,y=-3] -- [going=se]
+  ol/"Outside\\the Library" [x=4,y=-4,exits={e}] -- [going=s]
+  ts/"Town\\Square" [x=4,y=-5] -- [going=w]
+  ch,
+  ol  -- [going=w]
+  "Estate\\Agent's\\Office" [x=3,y=-4],
+  dr -- [going=n]
+  "The Old\\Well" [x=2,y=-1] -- [go={d=\tgmSSE}{u=\tgmNNW}]
+  "Circular\\Room" [x=3,y=-2],
+  "Drinking\\Fountain" [x=3,y=-6] -- [going=ne]
+  ts -- [going=e]
+  "Bridge" [x=5,y=-4.7,exit=w] -- [going=e]
+  pub/"Outside Pub" [x=6,y=-5,exit=n] -- [going=e]
+  cr/"Constabulary\\Road" [x=7,y=-5] -- [going=n]
+  "Backwater\\Jail" [x=7,y=-4] -- [going=n]
+  "Padded\\Cell" [x=7,y=-3],
+  pub -- [going=n]
+  "The\\Invisible\\Worm" [x=6,y=-4],
+  ts -- [going=se]
+  "River\\Walk" [x=5,y=-6] -- [going=n]
+  "Under the\\Bridge" [x=5,y=-5.25] -- [go={d=\tgmSE}{u=\tgmNE}]
+  st/"Subterranean\\tunnel" [x=5,y=-8] -- [going=nw]
+  te/"Tunnel\\Entrance" [x=-2,y=-7] -- [going=ne]
+  "Small\\Chamber" [x=-1,y=-6],
+  te -- [going=u]
+  "Church\\Basement" [x=-2,y=-6] -- [going=u]
+  co/"Church\\Office" [x=-2,y=-5],
+  cr -- [going=ne]
+  hp/"Hillside\\Path" [x=8,y=-4] -- [going=n]
+  fw/"Front\\Walk" [x=8,y=-3,exit=n,tunnel] -- [going=nw]
+  og/"Outside the\\Greenhouse" [x=7,y=-2] -- [going=ne]
+  bg/"The Cragne\\Manor's Back\\Garden" [x=8,y=-1] -- [going=se]
+  cfp/"Cragne\\Family\\Plot" [x=9,y=-2] -- [going=sw]
+  fw,
+  og -- [go={in=\tgmWSW}{o=\tgmENE}]
+  "Greenhouse" [x=6,y=-2],
+  bg -- [going=in]
+  "The\\Shambolic\\Shack" [x=9.5,y=-1],
+  cfp -- [going=in]
+  "Crypt" [x=10,y=-2],
+  hp -- [going=se]
+  "Outside\\the Plant" [x=9,y=-5] -- [going=in]
+  mp/"The\\meatpacking\\plant" [x=10,y=-6] -- [going=u]
+  "Dusty\\Office" [x=10,y=-5],
+  mp -- [going=w]
+  "Bathroom\\of the\\Meatpacking\\Plant" [x=8.9,y=-6],
+  ch -- [go={in=\tgmWSW}{o=\tgmENE}]
+  cn/"Church\\Narthex" [x=-1,y=-4] -- [going=u]
+  "Steeple" [x=-1,y=-3],
+  cn -- [going=w]
+  "Chapel" [x=-2,y=-4] -- [going=s]
+  co,
+  ol -- [going=e]
+  "Backwater\\Public\\Library" [x=5,y=-4],
+  cr -- [going=s]
+  ct/"Courtyard" [x=7,y=-6] -- [going=e]
+  "Curiosity\\Shop" [x=8,y=-6],
+  ct -- [going=d]
+  at/"Amorphous\\Tunnel" [x=7,y=-8] -- [going=ne]
+  "Malign\\Tunnel" [x=8,y=-7,tunnel,exit=u],
+  at -- [going=w]
+  "Narrow\\Straits" [x=6,y=-8] -- [going=w]
+  st
+};
+\end{gamemap}
+\end{adjustbox}
+
+\subsection{Cragne Manor}
+
+\begin{adjustbox}{max width=\linewidth}
+\sffamily
+\begin{gamemap}[set grid={10em}{6em}]
+\graph [no placement] {
+  fw/"Front\\Walk" [x=0,y=0,entry,exits={nw,ne,s}] -- [going=n]
+  "Mudroom" [x=0,y=1] -- [going=n]
+  f/"Foyer" [x=0,y=2,exit=n] -- [going=w]
+  "Court" [x=-1,y=2],
+  f -- [going=e]
+  "Gallery" [x=1,y=2] -- [going=n]
+  "Rec\\Room" [x=1,y=3] -- [going=e]
+  "Music\\Room" [x=2,y=3],
+  f -- [going=n]
+  lb/"Landing at\\the Bottom\\of Stairs" [x=0,y=3] -- [going=n]
+  dr/"Dining\\Room" [x=0,y=5] -- [going=w]
+  "Kitchen" [x=-1,y=5] -- [go={d}{u=\tgmNE}]
+  b/"Basement" [x=-2,y=4] -- [going=n]
+  "Cold Storage\\Room" [x=-2,y=5],
+  b -- [going=s]
+  "Boiler\\Room" [x=-2,y=3] -- [going=d]
+  "Malign\\Tunnel" [x=-2,y=2,tunnel,exit=sw] -- [going=sw]
+  at/"Amorphous\\Tunnel" [x=-3,y=1,exit=w] -- [go={u=\tgmNNW}{d=\tgmSSE}]
+  "Courtyard" [x=-4,y=2,exit=n] -- [going=e]
+  "Curiosity\\Shop" [x=-3,y=2],
+  b -- [going=e]
+  "Pantry" [x=-1.2,y=4] -- [going=e]
+  "Workroom" [x=-0.4,y=4],
+  b -- [going=w]
+  "Wine\\Cellar" [x=-3,y=4,exit=w] -- [going=w]
+  "Laboratory" [x=-4,y=4],
+  lb --[going=u]
+  "Top of\\Stairs" [x=2,y=5] -- [going=e]
+  hn/"Upstairs\\Hall N" [x=3,y=5] -- [going=s]
+  hs/"Hallway\\South" [x=3,y=4] -- [going=e]
+  "Library" [x=4,y=4],
+  hn -- [going=n]
+  "Nursery" [x=3,y=6],
+  hn -- [going=e]
+  "Master\\Bedroom" [x=4,y=5] -- [going=e]
+  "Shadowy\\Closet" [x=5,y=5] -- [go={u=\tgmSSW}{d=\tgmNNE}]
+  a/"Attic" [x=5,y=1] -- [going=w]
+  bc/"Branching\\Corridor" [x=4,y=1] -- [going=w]
+  "Science\\Tower" [x=3,y=1] -- [going=sw]
+  an/"Abandoned\\Nursery" [x=2,y=0] -- [going=n]
+  "Invasive\\Library" [x=2,y=2] -- [going=se]
+  bc -- [going=se]
+  "Observatory" [x=5,y=0],
+  a -- [rounded corners,tgmedge,to path={ -- (5,0.5) node [transit node,pos=0] {S} -- (2.25,0.5) -- (1.75,1.5) -- (1,1.5) -- (\tikztotarget) node [transit node,pos=1] {N} }]
+  "Disheveled\\Studio" [x=1,y=1] -- [going=se]
+  an,
+  hs -- [going=w]
+  "Study" [x=2,y=4],
+  hs -- [going=s]
+  "Balcony" [x=3,y=3],
+  dr -- [going=e]
+  "Sitting\\Room" [x=1,y=5],
+};
+\end{gamemap}
+\end{adjustbox}
+
+\subsection{Order in which rooms should be completed}
+
+\begin{adjustbox}{max size={\linewidth}{\dimexpr\textheight - 2.5em\relax},center}
+\sffamily
+\begin{gamemap}[>={Stealth[round,black]},set grid={8.5em}{5.5em}]
+\graph [no placement] {
+  % Unlocking
+  "Train station\\restroom" [x=0,y=26] -> "Exterior of\\Train station" [x=0,y=25] ->[forked=0.55]
+  { [y=24] "Milkweed"[x=-3,label={270:\faUniversity}], "The Dim\\Recesses of\\the Forest"[x=-2,label={270:\faUniversity}],
+    "Under the\\Bridge (clue)"[x=-1,label={270:\faUniversity}], cy/"Churchyard"[x=0],
+    "Shack\\Exterior\\(book)"[x=1,label={0:\faBook}], "Estate\\Agent's\\Office"[x=2,label={0:\faBook}],
+    rw/"River\\Walk"[x=-5] },
+  cy -> { [y=23] "Mausoleum"[x=1,label={0:\faBook}], "Bridge" [x=0]},
+  rw -> { [x=-5] "Railway\\Platform"[y=23] -> "The Old\\Well"[y=22] -> cr/"Circular\\Room"[y=21] },
+  "Bridge" ->[forked=0.6]
+  { [y=22] "Outside\\Pub"[x=-4,label={270:\faUniversity}], "Constabulary\\Road"[x=1],
+    bj/"Backwater\\Jail"[x=-2,label={270:\faBook}], hp/"Hillside\\Path (partial)"[x=3], "Front\\Walk"[x=4],
+    "Outside the\\Greenhouse"[x=5], bg/"Back\\Garden"[x=0], op/"Outside\\the Plant"[x=2],
+    "Cragne Family\\Plot (book)"[x=-1,label={270:\faBook}]},
+  bj <-> "Padded\\Cell"[x=-3,y=22,label={270:\faUniversity}],
+  op ->
+  { [y=21] "Dusty\\Office"[x=2,label={270:\faUniversity}],
+    "Bathroom\\of the Meat-\\packing Plant"[x=1,label={270:\faUniversity}] },
+  bg -> "Shambolic\\Shack\\(key 1)"[y=21] -> "Under the\\Bridge (door)"[y=20] ->
+  { [y=19] "Tunnel\\Entrance"[x=-1] -> "Small\\Chamber"[x=-1,y=18,label={0:\faBook}],
+    "Church\\Office (key)"[x=0,label={0:\faUniversity}] -> mr/"Mudroom"[x=0,y=18] },
+  mr ->[forked=0.55]
+  { [y=17] "Foyer"[x=-2], c1/"Court\\(key)"[x=-4], "Gallery"[x=-1] -> "Music\\Room"[x=-1,y=16,label={0:\faUniversity}],
+    "Landing at\\the Bottom\\of Stairs"[x=1,label={270:\faBook}], "Dining\\Room"[x=-3],
+    "Top of\\Stairs"[x=2,label={270:\faBook}], sy/"Study"[x=0], uh1/"Upstairs\\Hall N\\(N door)"[x=5],
+    "Hallway\\S (book)"[x=3,label={270:\faBook}],
+    "Library"[x=4,label={270:\faBook}] },
+  { [x=-4] c1 -> "Cragne Family\\Plot (door)"[y=16] -> "Crypt"[y=15,label={0:\faUniversity}] ->
+    cx/"Church\\Exterior"[y=14]} ->
+  { ch/"Chapel"[x=-5,y=12.5], "Lobby/\\Narthex"[x=-4,y=13,label={0:\faBook}] -> s1/"Steeple\\(key)"[x=-4,y=11] },
+  "TW/Church\\Office (door)"[x=-3,y=14] -- [double] cx,
+  sy -> k/Kitchen [x=0,y=16] ->[forked]
+  { [y=15] "Basement"[x=1,label={270:\faBook}], "Cold\\Storage"[x=-1,label={270:\faUniversity}], "Workroom"[x=2,label={270:\faBook}], "Boiler\\Room"[x=3,label={270:\faBook}],
+    "Malign\\Tunnel"[x=-2], "Courtyard"[x=-3], wc/"Wine\\Cellar"[x=0] ->[hooked] lab/Laboratory [x=-1,y=12]},
+  uh1 ->
+  { [x=4.5] nc/"Nursery/\\Carol's Room"[y=16] -> "Town\\Square"[y=15] -> "Church\\Basement"[y=14] } ->
+  { [x=4] py/"Pantry"[y=13] -> s2/"Steeple\\(stars)"[y=11] },
+  k ->[forked=2.5] py,
+  hp ->[hooked,dashed,tgmedge] nc,
+  "Hillside\\Path"[x=3.5,y=16] <-> nc,
+  wc -> "Hallway\\S (door)"[y=14] ->  Balcony [y=13] -> "Upstairs\\Hall N\\(E door)" [y=12,label={0:\faUniversity}] ->
+  { [y=11] "Master\\Bedroom"[x=1], sc/"Shadowy\\Closet"[x=0] },
+  cr -> ch ->[tgmedge] lab -> sc ->[forked]
+  { [y=10] a/"Attic"[x=0], ds/"Disheveled\\Studio"[x=-1,label={0:\faBook}], "Invasive\\Library"[x=1,label={270:\faBook}],
+    bc/"Branching\\Corridor"[x=-2], st/"Science\\Tower"[x=-3] },
+  a ->
+  { [x=0] "Shambolic\\Shack\\(key 2)"[y=9] -> "Rec\\Room"[y=8] -> mpp/"The\\Meatpacking\\Plant"[y=7] ->
+    "The\\Invisible\\Worm"[y=6] -> "Greenhouse"[y=5] -> "Abandoned\\Nursery"[y=4] -> "Sitting\\Room"[y=3] ->
+    is/"Inside\\the Shack"[y=2] -> obs/"Observatory" [x=0,y=1] },
+  op ->[hooked=14,tgmedge,rounded corners,%
+        to path={-- (2.5,21) -- (2.5,9) -- (\tikztotarget) \tikztonodes}] mpp,
+  ds ->
+  { [x=-1] "Train\\Station\\Lobby"[y=5] -> "Station\\Security\\Room"[y=4] -> "Shack\\Exterior\\(door)"[y=3] -> is },
+  st -> { [x=-3] "Curiosity\\Shop" [y=9] -> ns/"Narrow\\Straits" [y=8] },
+  s1 -> sub/"Subterranean\\Tunnel" [x=-4,y=9] -- [double] "Amorphous\\Tunnel" [x=-5,y=9],
+  sub -> ns,
+  % Books
+  bk1/"9~\faBook"[x=3,y=7] -> "Drinking\\Fountain" [x=2,y=6,label={0:\faBook}] -> pl/"Backwater\\Public\\Library" [x=2,y=3]
+      ->[rounded corners, to path={-- (2,2) -- (\tikztotarget) \tikztonodes}] obs,
+  bk2/"17~\faBook"[x=3,y=4] -> pl,
+  % Variegated Court
+  vc/"12~\faUniversity"[x=1,y=4] -> c2/"Court\\(obelisk)" [x=1,y=3]
+     ->[rounded corners, to path={-- (1,2) -- (\tikztotarget) \tikztonodes}] obs,
+  bc ->[rounded corners, to path={-- (-2,2) -- (\tikztotarget) \tikztonodes}] obs,
+  ns ->[rounded corners, to path={-- (-3,2) -- (\tikztotarget) \tikztonodes}] obs,
+  s2 ->[rounded corners, to path={-- (4,2) -- (\tikztotarget) \tikztonodes}] obs
+};
+\end{gamemap}
+\end{adjustbox}
+
+\newpage
+When using these maps to construct your own route,
+here are some points that did not fit neatly on the diagrams:
+
+\begin{itemize}
+\item
+  Having gained access to the Court and followed the branch down to get the key
+  from the Steeple, it is possible to unlock the Subterranean and Amorphous Tunnels
+  and thereby gain access to the Manor basement area before visiting the Study
+  and the Kitchen. (And you can unlock the Kitchen trap door from below.)
+
+  I didn't do this in my recommended route as I think it makes less sense from
+  a narrative perspective.
+
+\item
+  If you wait until you have access to the Balcony, then you can use the Trolley
+  to cut down on the travel you need to do between the Hillside Path and the
+  Nursery\slash Carol's Room, especially if you want to limit the amount of
+  supernatural assistance you use.
+
+  In my route I didn't do this because, by completing the pair of rooms early,
+  it saves additional trips to mop up the Church Basement and the Pantry.
+\end{itemize}
+
+\newpage
+\section{Acknowledgements}\label{sec:ack}
+
+In order to complete the game and compile this guide, I relied on both the
+questions and answers from the good folk on the Interactive Fiction Community
+Forum, specifically these two threads:
+
+\begin{itemize}
+\item
+  \href{https://intfiction.org/t/cragne-manor-hint-thread/13961}{Cragne Manor hint thread}
+\item
+  \href{https://intfiction.org/t/cragne-manor-complete-guide-and-walkthrough/14019}{Cragne Manor Complete Guide and Walkthrough}
+\end{itemize}
+
+This is not the Complete Guide and Walkthrough, as you may have noticed from the lack of completeness.
+\end{document}
