@@ -1,1 +1,372 @@
-/home/alex/Data/Development/tikzgamemap/tgm1.sty
+%%
+%% This is file `tgm1.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikzgamemap.dtx  (with options: `tgm1')
+%% ---------------------------------------------------------------------------
+%% tikzgamemap --- Maps for interactive fiction with TikZ
+%% 
+%%  Author: Alex Ball
+%%  E-mail: ab318@bath.ac.uk
+%% License: Released under the LaTeX Project Public License v1.3c or later
+%%     See: http://www.latex-project.org/lppl.txt
+%% ---------------------------------------------------------------------------
+%% 
+\def\Version{2019/02/19 v0.1}
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{tgm1}
+    [\Version\space Maps for interactive fiction with TikZ]
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\usetikzlibrary{graphs, quotes, shapes.misc}
+\def\tgmE{0}
+\def\tgmN{90}
+\def\tgmW{180}
+\def\tgmS{270}
+\def\tgmEE{360}
+\tikzset
+{ set compass points/.code n args = {2}{%
+    \pgfmathsetmacro{\tgmNE}{atan2(#2, #1)}%
+    \pgfmathsetmacro{\tgmNW}{atan2(#2, -#1)}%
+    \pgfmathsetmacro{\tgmSW}{add(atan2(-#2, -#1), 360)}%
+    \pgfmathsetmacro{\tgmSE}{add(atan2(-#2, #1), 360)}%
+    \pgfmathsetmacro{\tgmENE}{divide(add(\tgmE,  \tgmNE), 2)}%
+    \pgfmathsetmacro{\tgmNNE}{divide(add(\tgmNE, \tgmN ), 2)}%
+    \pgfmathsetmacro{\tgmNNW}{divide(add(\tgmN,  \tgmNW), 2)}%
+    \pgfmathsetmacro{\tgmWNW}{divide(add(\tgmNW, \tgmW ), 2)}%
+    \pgfmathsetmacro{\tgmWSW}{divide(add(\tgmW,  \tgmSW), 2)}%
+    \pgfmathsetmacro{\tgmSSW}{divide(add(\tgmSW, \tgmS ), 2)}%
+    \pgfmathsetmacro{\tgmSSE}{divide(add(\tgmS,  \tgmSE), 2)}%
+    \pgfmathsetmacro{\tgmESE}{divide(add(\tgmSE, \tgmEE), 2)}%
+  }
+, set grid/.code n args = {2}{%
+    \pgfkeys{tikz,x = #1}%
+    \pgfkeys{tikz,y = #2}%
+    \pgfkeys{tikz,set compass points = {#1}{#2}}%
+  }
+, tgmnode/.style =
+  { text depth = 0.2em
+  , align = center
+  , draw = black!20
+  , thick
+  , fill = white
+  , rounded rectangle
+  , inner sep = 1.25ex
+  }
+  %    \begin{macrocode}
+, entry/.style =
+  { double
+  }
+, tunnel/.style =
+  { ultra thick
+  }
+, note node/.style =
+  { label distance=0pt
+  , /tikz/font=\scriptsize
+  }
+, note/.code = {%
+    \pgfutil@ifnextchar[%]
+      { \tgm@note@opt }%
+      { \tgm@note@nonopt }%
+    #1\pgf@nil
+  }
+}
+\def\tgm@note@opt[#1]#2\pgf@nil{%
+  \pgfkeys{ tikz,label = {[note node, #1]#2} }
+}
+\def\tgm@note@nonopt#1\pgf@nil{%
+  \pgfkeys{ tikz,label = {[note node]#1} }
+}
+\tikzset
+{ label node/.style =
+  { label distance = -0.5em - 0.2pt
+  , font = \tiny
+  , minimum size = 1em
+  , circle
+  , thin
+  , inner sep = 0pt
+  , fill = white
+  , draw = black!20
+  , solid
+  }
+, exit node/.style =
+  { label node
+  }
+, transit node/.style =
+  { label node
+  }
+, exit/.is choice
+, exit/e/.style  = { label={[exit node]\tgmE:E} }
+, exit/ne/.style = { label={[exit node]\tgmNE:\textsc{ne}} }
+, exit/n/.style  = { label={[exit node]\tgmN:N} }
+, exit/nw/.style = { label={[exit node]\tgmNW:\textsc{nw}} }
+, exit/w/.style  = { label={[exit node]\tgmW:W} }
+, exit/sw/.style = { label={[exit node]\tgmSW:\textsc{sw}} }
+, exit/s/.style  = { label={[exit node]\tgmS:S} }
+, exit/se/.style = { label={[exit node]\tgmSE:\textsc{se}} }
+, exit/u/.style    = { label={[exit node]#1:U} }
+, exit/u/.default  = { \tgmNNE }
+, exit/d/.style    = { label={[exit node]#1:D} }
+, exit/d/.default  = { \tgmSSW }
+, exit/in/.style   = { label={[exit node]#1:in} }
+, exit/in/.default = { \tgmESE }
+, exit/o/.style    = { label={[exit node]#1:O} }
+, exit/o/.default  = { \tgmWNW }
+, exit/act/.style 2 args = {label={[exit node]#2:{#1}}}
+, exits/.style = { exit/.list={#1} }
+, labelin/.is choice
+, labelin/e/.style   = { edge node={node [transit node, pos=1] {E}} }
+, labelin/ne/.style  = { edge node={node [transit node, pos=1] {\textsc{ne}}} }
+, labelin/n/.style   = { edge node={node [transit node, pos=1] {N}} }
+, labelin/nw/.style  = { edge node={node [transit node, pos=1] {\textsc{nw}}} }
+, labelin/w/.style   = { edge node={node [transit node, pos=1] {W}} }
+, labelin/sw/.style  = { edge node={node [transit node, pos=1] {\textsc{sw}}} }
+, labelin/s/.style   = { edge node={node [transit node, pos=1] {S}} }
+, labelin/se/.style  = { edge node={node [transit node, pos=1] {\textsc{se}}} }
+, labelin/u/.style   = { edge node={node [transit node, pos=1] {U}} }
+, labelin/d/.style   = { edge node={node [transit node, pos=1] {D}} }
+, labelin/in/.style  = { edge node={node [transit node, pos=1] {in}} }
+, labelin/o/.style   = { edge node={node [transit node, pos=1] {O}} }
+, labelin/act/.style = { edge node={node [transit node, pos=1] {#1}} }
+, labelin/null/.style = {}
+, labelout/.is choice
+, labelout/e/.style  = { edge node={node [transit node, pos=0] {E}} }
+, labelout/ne/.style = { edge node={node [transit node, pos=0] {\textsc{ne}}} }
+, labelout/n/.style  = { edge node={node [transit node, pos=0] {N}} }
+, labelout/nw/.style = { edge node={node [transit node, pos=0] {\textsc{nw}}} }
+, labelout/w/.style  = { edge node={node [transit node, pos=0] {W}} }
+, labelout/sw/.style = { edge node={node [transit node, pos=0] {\textsc{sw}}} }
+, labelout/s/.style  = { edge node={node [transit node, pos=0] {S}} }
+, labelout/se/.style = { edge node={node [transit node, pos=0] {\textsc{se}}} }
+, labelout/u/.style  = { edge node={node [transit node, pos=0] {U}} }
+, labelout/d/.style  = { edge node={node [transit node, pos=0] {D}} }
+, labelout/in/.style = { edge node={node [transit node, pos=0] {in}} }
+, labelout/o/.style  = { edge node={node [transit node, pos=0] {O}} }
+, labelout/act/.style = { edge node={node [transit node, pos=0] {#1}} }
+, labelout/null/.style = {}
+, startedge/.is choice
+, startedge/e/.style =
+  { out = \tgmE
+  , labelout = e
+  }
+, startedge/ne/.style =
+  { out = \tgmNE
+  , labelout = ne
+  }
+, startedge/n/.style =
+  { out = \tgmN
+  , labelout = n
+  }
+, startedge/nw/.style =
+  { out = \tgmNW
+  , labelout = nw
+  }
+, startedge/w/.style =
+  { out = \tgmW
+  , labelout = w
+  }
+, startedge/sw/.style =
+  { out = \tgmSW
+  , labelout = sw
+  }
+, startedge/s/.style =
+  { out = \tgmS
+  , labelout = s
+  }
+, startedge/se/.style =
+  { out = \tgmSE
+  , labelout = se
+  }
+, startedge/u/.style =
+  { out = #1
+  , labelout = u
+  }
+, startedge/u/.default  = {\tgmNNE}
+, startedge/d/.style =
+  { out = #1
+  , labelout = d
+  }
+, startedge/d/.default = {\tgmSSW}
+, startedge/in/.style =
+  { out = #1
+  , labelout = in
+  }
+, startedge/in/.default  = {\tgmESE}
+, startedge/o/.style =
+  { out = #1
+  , labelout = o
+  }
+, startedge/o/.default  = {\tgmWNW}
+, startedge/act/.style 2 args =
+  { out = #2
+  , labelout = {act = #1}
+  }
+, startedge/.default = null
+, startedge/null/.code = {%
+    \pgfkeys{tikz, labelout/null}%
+    \ifblank{#1}{}{%
+      \pgfkeys{tikz, out = {#1}}%
+    }%
+  }
+, startedge/null/.default  = {}
+, endedge/.is choice
+, endedge/e/.style =
+  { in = \tgmE
+  , labelin = e
+  }
+, endedge/ne/.style =
+  { in = \tgmNE
+  , labelin = ne
+  }
+, endedge/n/.style =
+  { in = \tgmN
+  , labelin = n
+  }
+, endedge/nw/.style =
+  { in = \tgmNW
+  , labelin = nw
+  }
+, endedge/w/.style =
+  { in = \tgmW
+  , labelin = w
+  }
+, endedge/sw/.style =
+  { in = \tgmSW
+  , labelin = sw
+  }
+, endedge/s/.style =
+  { in = \tgmS
+  , labelin = s
+  }
+, endedge/se/.style =
+  { in = \tgmSE
+  , labelin = se
+  }
+, endedge/u/.style =
+  { in = #1
+  , labelin = u
+  }
+, endedge/u/.default  = {\tgmNNE}
+, endedge/d/.style =
+  { in = #1
+  , labelin = d
+  }
+, endedge/d/.default = {\tgmSSW}
+, endedge/in/.style =
+  { in = #1
+  , labelin = in
+  }
+, endedge/in/.default  = {\tgmESE}
+, endedge/o/.style =
+  { in = #1
+  , labelin = o
+  }
+, endedge/o/.default  = {\tgmWNW}
+, endedge/act/.style 2 args =
+  { in = #2
+  , labelin = {act = #1}
+  }
+, endedge/.default = null
+, endedge/null/.code = {%
+    \pgfkeys{tikz, labelin/null}%
+    \ifblank{#1}{}{%
+      \pgfkeys{tikz, in = {#1}}%
+    }%
+  }
+, endedge/null/.default  = {}
+, tgmedge/.style =
+  { draw = white
+  , double = black
+  }
+, go/.style n args = {2}{tgmedge, startedge = {#1}, endedge = {#2}}
+, warp/.code n args = {4}{%
+  \ifstrempty{#1}{%
+    \ifstrempty{#3}{%
+      \pgfkeys{tikz, go={null=#2}{null=#4}}%
+    }{%
+      \pgfkeys{tikz, go={null=#2}{act={#3}{#4}}}}%
+  }{%
+    \ifstrempty{#3}{%
+      \pgfkeys{tikz, go={act={#1}{#2}}{null=#4}}%
+    }{%
+      \pgfkeys{tikz, go={act={#1}{#2}}{act={#3}{#4}}}}}}
+, uturn loop/.pic =
+  {
+    \draw[tgmedge] (0,0) .. controls +(0.5,0.25) and +(0.5,-0.25) .. (0,0);
+  }
+, uturn/.style 2 args =
+  {
+  , label={[label distance = -0.5em - 0.2pt]#2:\tikz{\pic[rotate=#2]{uturn loop};}}
+  , label={[transit node]#2:#1}
+  }
+, maze/.style n args = {2}{tgmedge, labelout = {#1}, labelin = {#2}}
+, going/.code = {%
+    \pgfkeys{tikz, tgmedge, startedge/#1}%
+    \ifstrequal{#1}{e}{%
+      \pgfkeys{tikz,endedge = w}%
+    }{%
+    \ifstrequal{#1}{ne}{%
+      \pgfkeys{tikz,endedge = sw}%
+    }{%
+    \ifstrequal{#1}{n}{%
+      \pgfkeys{tikz,endedge = s}%
+    }{%
+    \ifstrequal{#1}{nw}{%
+      \pgfkeys{tikz,endedge = se}%
+    }{%
+    \ifstrequal{#1}{w}{%
+      \pgfkeys{tikz,endedge = e}%
+    }{%
+    \ifstrequal{#1}{sw}{%
+      \pgfkeys{tikz,endedge = ne}%
+    }{%
+    \ifstrequal{#1}{s}{%
+      \pgfkeys{tikz,endedge = n}%
+    }{%
+    \ifstrequal{#1}{se}{%
+      \pgfkeys{tikz,endedge = nw}%
+    }{%
+    \ifstrequal{#1}{u}{%
+      \pgfkeys{tikz,endedge = d}%
+    }{%
+    \ifstrequal{#1}{d}{%
+      \pgfkeys{tikz,endedge = u}%
+    }{%
+    \ifstrequal{#1}{in}{%
+      \pgfkeys{tikz,endedge = o}%
+    }{%
+    \ifstrequal{#1}{o}{%
+      \pgfkeys{tikz,endedge = in}%
+    }{}}}}}}}}}}}}%
+  }
+}
+\newenvironment{gamemap}[1][]{%
+\begin{tikzpicture}
+[ set grid = {8em}{5em}
+, graphs/every graph/.style =
+  { nodes = tgmnode
+  }
+, every edge quotes/.append style = {font = \scriptsize}
+, #1
+]
+\linespread{0.9}
+}{%
+\end{tikzpicture}%
+}
+%% 
+%% Copyright (C) 2019 by Alex Ball <ab318@bath.ac.uk>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License (LPPL), either
+%% version 1.3c of this license or (at your option) any later
+%% version.  The latest version of this license is in the file:
+%% 
+%% http://www.latex-project.org/lppl.txt
+%% 
+%% This work is "maintained" (as per LPPL maintenance status) by
+%% Alex Ball.
+%% 
+%%
+%% End of file `tgm1.sty'.
